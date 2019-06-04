@@ -1,1 +1,1 @@
-# ts-collection
+# collection-ts

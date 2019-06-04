@@ -1,5 +1,5 @@
 {
-    "name": "ts-collection",
+    "name": "@kurozero/collection",
     "version": "0.1.0",
     "description": "A modern Collection implementation in TypeScript",
     "license": "MIT",
@@ -19,12 +19,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/KurozeroPB/TSCollection.git"
+        "url": "git+https://github.com/KurozeroPB/Collection.git"
     },
-    "homepage": "https://github.com/KurozeroPB/TSCollection#readme",
+    "homepage": "https://github.com/KurozeroPB/Collection#readme",
     "bugs": {
         "email": "bugs@kurozeropb.info",
-        "url": "https://github.com/KurozeroPB/TSCollection/issues"
+        "url": "https://github.com/KurozeroPB/Collection/issues"
     },
     "keywords": [
         "collection",

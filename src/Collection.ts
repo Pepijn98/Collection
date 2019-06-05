@@ -95,7 +95,7 @@ export class Collection<T> extends Map<string | number, T> {
      * @returns {Collection<T>} The merged collection
      */
     public merge(x: Collection<T>): Collection<T> {
-        const temp: Collection<any> = new Collection();
+        const temp = new Collection<T>();
         for (const [key, value] of x) {
             temp.set(key, value);
         }

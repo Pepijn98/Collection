@@ -12,7 +12,7 @@ export class Collection<T> extends Map<string | number, T> {
      */
     public constructor(base?: AbstractClass<T>) {
         super();
-        this.TName = base ? base.name : "unkown";
+        this.TName = base ? base.name : "unknown";
     }
 
     /**

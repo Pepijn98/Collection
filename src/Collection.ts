@@ -95,10 +95,11 @@ export class Collection<T> extends Map<string | number, T> {
      * @returns {Collection<T>} The merged collection
      */
     public merge(x: Collection<T>): Collection<T> {
+        const temp: Collection<any> = new Collection();
         for (const [key, value] of x) {
-            this.set(key, value);
+            temp.set(key, value);
         }
-        return this;
+        return temp;
     }
 
     /**

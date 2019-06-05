@@ -62,4 +62,4 @@ typings/
 
 # Build
 lib
-.nojekyll
+/.nojekyll

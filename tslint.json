@@ -1,8 +1,6 @@
 {
     "defaultSeverity": "error",
-    "extends": [
-        "tslint-config-airbnb"
-    ],
+    "extends": "gts/tslint.json",
     "jsRules": {},
     "rules": {
         "import-name": false,
@@ -12,9 +10,10 @@
             "avoid-escape",
             "avoid-template"
         ],
-        "ter-indent": [
+        "indent": [
             true,
-            "tab"
+            "spaces",
+            4
         ],
         "trailing-comma": [
             true,

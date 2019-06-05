@@ -1,6 +1,6 @@
 {
     "name": "@kurozero/collection",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "A modern Collection implementation in TypeScript",
     "license": "MIT",
     "main": "lib/index",
@@ -38,21 +38,23 @@
         "types:generate": "dts-bundle-generator -o lib/index.d.ts src/index.ts",
         "test": "yarn run test:jest && yarn run test:tslint",
         "test:jest": "jest --config jest.config.json --no-cache",
-        "test:tslint": "tslint -p ./"
+        "test:tslint": "tslint -p ./",
+        "docs": "typedoc && cp .nojekyll docs/"
     },
+    "dependencies": {},
     "devDependencies": {
         "@types/jest": "^24.0.13",
         "@typescript-eslint/eslint-plugin": "^1.9.0",
         "@typescript-eslint/parser": "^1.9.0",
         "dts-bundle-generator": "^3.1.0",
         "eslint": "^5.16.0",
+        "gts": "^1.0.0",
         "jest": "^24.8.0",
         "rollup": "^1.13.1",
         "rollup-plugin-typescript": "^1.0.1",
         "ts-jest": "^24.0.2",
         "tslib": "^1.9.3",
         "tslint": "^5.17.0",
-        "tslint-config-airbnb": "^5.11.1",
         "typescript": "^3.5.1"
     }
 }

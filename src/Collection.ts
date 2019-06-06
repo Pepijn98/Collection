@@ -37,12 +37,13 @@ export class Collection<T> extends Map<string | number, T> {
 
     /**
      * Simple set function
+     * If `v` has an index named `_key` it will use it as the key
      *
      * @param {T} v Value to add to the collection
      */
     public add(v: T): void {
-        if ((v as any)["_id"])
-            this.set((v as any)["_id"], v);
+        if ((v as any)["_key"])
+            this.set((v as any)["_key"], v);
         else
             this.set(this.size, v);
     }

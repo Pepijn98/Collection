@@ -12,16 +12,16 @@ export class Collection<T> extends Map<string | number, T> {
      */
     public constructor(base?: AbstractClass<T>) {
         super();
-        this.TName = base ? base.name : "unknown";
+        this.TName = base ? base.name : "any";
     }
 
     /**
      * Create a Collection from an array type
      *
-     * @param {Array<any>|Record<string|number|symbol, any>} a The array you want to create a collection from
-     * @returns {Collection<unknown>} The created collection
+     * @param {any[] | Record<string|number|symbol, any>} x The array you want to create a collection from
+     * @returns {Collection<any>} The created collection
      */
-    public static from(x: Array<any> | Record<string|number|symbol, any>): Collection<unknown> {
+    public static from(x: any[] | Record<string|number|symbol, any>): Collection<any> {
         const col = new Collection();
         if (Array.isArray(x)) {
             for (let i = 0; i < x.length; i++) {
@@ -51,7 +51,7 @@ export class Collection<T> extends Map<string | number, T> {
      * Returns first matching Object or undefined if no match
      *
      * @param {Function} fn A function that returns true if it matches the given param
-     * @returns {T|undefined} The first matching object or undefined if none found
+     * @returns {T | undefined} The first matching object or undefined if none found
      */
     public find(fn: (i: T) => boolean): T | undefined {
         for (const item of this.values()) {
@@ -64,7 +64,7 @@ export class Collection<T> extends Map<string | number, T> {
      * Returns an Array with all the elements that make the function evaluate true
      *
      * @param {Function} fn A function that returns true if it matches the given param
-     * @returns {Array<T>} An array with all the elements that evaluated true
+     * @returns {T[]} An array with all the elements that evaluated true
      */
     public filter(fn: (i: T) => boolean): T[] {
         const results: T[] = [];
@@ -78,7 +78,7 @@ export class Collection<T> extends Map<string | number, T> {
      * Returns an Array with the results of applying the given function to each element
      *
      * @param {Function} fn A function that returns a result
-     * @returns {Array<R>} An array with the results
+     * @returns {R[]} An array with the results
      */
     public map<R>(fn: (i: T) => R): R[] {
         const results: R[] = [];
@@ -91,7 +91,7 @@ export class Collection<T> extends Map<string | number, T> {
     /**
      * Merge two collections
      *
-     * @param {Collection<T>} x A collection to merge into this
+     * @param {Collection<T>} x A collection to merge together with this
      * @returns {Collection<T>} The merged collection
      */
     public merge(x: Collection<T>): Collection<T> {

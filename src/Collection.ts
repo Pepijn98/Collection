@@ -8,15 +8,28 @@ export class Collection<T> extends Map<string | number, T> {
     /**
      * Another way is to use `base: new () => T` or `base: T&Function` but this does not work with abstract classes.
      *
-     * @param {AbstractClass<T>} [base] The type of the collection, even though it's optional it's better to always pass a param
+     * @param {AbstractClass | null} [base] The type of the collection, even though it's optional it's better to always pass a param
+     * @param {T[] | Record<string|number|symbol, T> | null} [from] Construct new Collection with items from array or object
      */
-    public constructor(base?: AbstractClass) {
+    public constructor(base?: AbstractClass | null, from?: T[] | Record<string|number|symbol, T> | null) {
         super();
         this.TName = base ? base.name : "any";
+
+        if (from) {
+            if (Array.isArray(from)) {
+                for (let i = 0; i < from.length; i++) {
+                    this.set(i, from[i]);
+                }
+            } else if (from instanceof Object) {
+                for (const [key, value] of Object.entries(from)) {
+                    this.set(key, value);
+                }
+            }
+        }
     }
 
     /**
-     * Create a Collection from an array type
+     * Create a Collection from an Array or Object
      *
      * @since 0.2.0
      *

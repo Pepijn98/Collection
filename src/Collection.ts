@@ -51,6 +51,23 @@ export class Collection<T> extends Map<string | number, T> {
     }
 
     /**
+     * Merge multiple collections together
+     *
+     * @since 0.3.4
+     *
+     * @param {Collection<any>[]} collections All the collections you want to merge together
+     */
+    public static merge(...collections: Collection<any>[]): Collection<any> {
+        const temp = new Collection();
+        for (let i = 0; i < collections.length; i++) {
+            for (const value of collections[i].values()) {
+                temp.set(temp.size, value);
+            }
+        }
+        return temp;
+    }
+
+    /**
      * Simple set function
      * If `v` has an index named `_key` it will use it as the key
      *

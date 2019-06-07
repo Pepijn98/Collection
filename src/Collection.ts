@@ -1,4 +1,4 @@
-interface AbstractClass<T> {
+interface AbstractClass {
     name: string;
 }
 
@@ -10,7 +10,7 @@ export class Collection<T> extends Map<string | number, T> {
      *
      * @param {AbstractClass<T>} [base] The type of the collection, even though it's optional it's better to always pass a param
      */
-    public constructor(base?: AbstractClass<T>) {
+    public constructor(base?: AbstractClass) {
         super();
         this.TName = base ? base.name : "any";
     }

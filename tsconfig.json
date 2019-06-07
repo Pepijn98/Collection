@@ -9,6 +9,7 @@
             "node_modules/@types"
         ],
         "moduleResolution": "node",
+        "esModuleInterop": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "declaration": true,

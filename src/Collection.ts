@@ -81,10 +81,11 @@ export class Collection<T> extends Map<string | number, T> {
      * @param {Function} fn A function that returns a result
      * @returns {R[]} An array with the results
      */
-    public map<R>(fn: (i: T) => R): R[] {
+    public map<R>(fn: (v: T, i: number, a: Collection<T>) => R): R[] {
         const results: R[] = [];
-        for (const item of this.values()) {
-            results.push(fn(item));
+        const arr = Array.from(this.values());
+        for (let i = 0; i < arr.length; i++) {
+            results.push(fn(arr[i], i, this));
         }
         return results;
     }
@@ -97,8 +98,11 @@ export class Collection<T> extends Map<string | number, T> {
      */
     public merge(x: Collection<T>): Collection<T> {
         const temp = new Collection<T>();
-        for (const [key, value] of x) {
+        for (const [key, value] of this) {
             temp.set(key, value);
+        }
+        for (const value of x.values()) {
+            temp.set(temp.size, value);
         }
         return temp;
     }

@@ -3,5 +3,5 @@ module.exports = {
     verbose: true,
     preset: "ts-jest",
     testEnvironment: "node",
-    testMatch: ["<rootDir>/test/*.test.ts"]
+    testMatch: ["<rootDir>/src/test/*.test.ts"]
 };

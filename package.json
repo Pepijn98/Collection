@@ -37,7 +37,7 @@
         "rollup:watch": "yarn run rollup:build -- --watch",
         "types:generate": "dts-bundle-generator -o lib/index.d.ts src/index.ts",
         "test": "yarn run test:jest && yarn run test:tslint",
-        "test:jest": "jest --config jest.config.json --no-cache",
+        "test:jest": "jest --config jest.config.js --no-cache",
         "test:tslint": "tslint -p ./",
         "docs": "typedoc && cp .nojekyll docs/"
     },

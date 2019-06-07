@@ -34,6 +34,14 @@ describe("Collection", () => {
         })
     });
 
+    describe("#addMany()", () => {
+        const collection = new Collection<string>(String);
+        collection.addMany(["foo", "bar", "baz", "test"]);
+        it("should have a size of 4", () => {
+            expect(collection.size).toBe(4);
+        })
+    });
+
     describe("#find()", () => {
         const collection = Collection.from(["foo", "bar", "baz", "test"]);
         const item = collection.find((v) => v === "foo");

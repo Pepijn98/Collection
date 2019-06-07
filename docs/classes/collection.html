@@ -106,6 +106,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="collection.html#___iterator" class="tsd-kind-icon">__@iterator</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="collection.html#add" class="tsd-kind-icon">add</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="collection.html#addmany" class="tsd-kind-icon">add<wbr>Many</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="collection.html#clear" class="tsd-kind-icon">clear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="collection.html#delete" class="tsd-kind-icon">delete</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="collection.html#entries" class="tsd-kind-icon">entries</a></li>
@@ -139,7 +140,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L6">Collection.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L6">Collection.ts:6</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -228,7 +229,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L44">Collection.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L48">Collection.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -236,6 +237,11 @@
 									<p>Simple set function
 									If <code>v</code> has an index named <code>_key</code> it will use it as the key</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.2.0</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -243,6 +249,43 @@
 									<h5>v: <span class="tsd-signature-type">T</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Value to add to the collection</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addmany" class="tsd-anchor"></a>
+					<h3>add<wbr>Many</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Many<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L63">Collection.ts:63</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add multiple items at once to the collection
+									Works the same as with Collection#add() but with multiple items</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.3.3</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>a: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The array with items</p>
 									</div>
 								</li>
 							</ul>
@@ -325,13 +368,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L70">Collection.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L95">Collection.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns an Array with all the elements that make the function evaluate true</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.1.0</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -375,13 +423,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L57">Collection.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L80">Collection.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns first matching Object or undefined if no match</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.1.0</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -553,13 +606,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L84">Collection.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L111">Collection.ts:111</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns an Array with the results of applying the given function to each element</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.1.0</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -615,13 +673,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L99">Collection.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L128">Collection.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Merge two collections</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.1.0</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -647,13 +710,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L115">Collection.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L146">Collection.ts:146</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns a random Object from the Collection or undefined if the Collection is empty</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.1.0</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>
 								<span class="tsd-signature-symbol"> | </span>
@@ -700,9 +768,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L120">Collection.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L154">Collection.ts:154</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.1.0</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -740,13 +815,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/eef9afa/src/Collection.ts#L24">Collection.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/37336c7/src/Collection.ts#L26">Collection.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Create a Collection from an array type</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.2.0</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -796,6 +876,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="collection.html#add" class="tsd-kind-icon">add</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="collection.html#addmany" class="tsd-kind-icon">add<wbr>Many</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="collection.html#clear" class="tsd-kind-icon">clear</a>

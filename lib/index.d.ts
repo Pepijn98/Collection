@@ -20,6 +20,14 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 */
 	static from(x: any[] | Record<string | number | symbol, any>): Collection<any>;
 	/**
+	 * Merge multiple collections together
+	 *
+	 * @since 0.3.4
+	 *
+	 * @param {Collection<any>[]} collections All the collections you want to merge together
+	 */
+	static merge(...collections: Collection<any>[]): Collection<any>;
+	/**
 	 * Simple set function
 	 * If `v` has an index named `_key` it will use it as the key
 	 *

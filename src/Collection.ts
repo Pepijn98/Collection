@@ -58,7 +58,7 @@ export class Collection<T> extends Map<string | number, T> {
      * @param {Collection<any>[]} collections All the collections you want to merge together
      */
     public static merge(...collections: Collection<any>[]): Collection<any> {
-        const temp = new Collection();
+        const temp = new Collection<any>();
         for (let i = 0; i < collections.length; i++) {
             for (const value of collections[i].values()) {
                 temp.set(temp.size, value);

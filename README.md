@@ -42,10 +42,10 @@ const obj = {
 };
 const objCol = Collection.from(obj);
 console.log(objCol);
-// Collection [Map] {
-//   'foo' => 'bar',
-//   'test' => '123',
-//   'abc' => 'def'
+// Collection {
+//     'foo' => 'bar',
+//     'test' => '123',
+//     'abc' => 'def'
 // }
 ```
 
@@ -64,12 +64,12 @@ const arr = [
 ];
 const arrCol = Collection.from(arr);
 console.log(arrCol);
-// Collection [Map] {
-//   0 => 'foo',
-//   1 => 'bar',
-//   2 => 'baz',
-//   3 => 'test',
-//   4 => '123'
+// Collection {
+//     0 => 'foo',
+//     1 => 'bar',
+//     2 => 'baz',
+//     3 => 'test',
+//     4 => '123'
 // }
 ```
 
@@ -91,7 +91,7 @@ cars.add(new Car({ name: "A1", brand: "Audi" }));
 cars.add(new Car({ name: "A3", brand: "Audi" }));
 cars.add(new Car({ name: "Polo", brand: "Volkswagen" }));
 console.log(cars);
-// Collection [Map] {
+// Collection {
 //     0 => Car { name: 'A6', brand: 'Audi' },
 //     1 => Car { name: 'A1', brand: 'Audi' },
 //     2 => Car { name: 'A3', brand: 'Audi' },

@@ -73,29 +73,56 @@ export class Collection<T> extends Map<string | number, T> {
      *
      * @since 0.2.0
      *
+     * @example
+     * ```ts
+     * const collection = new Collection<string>(String);
+     * collection.add("foo");
+     * // Collection {
+     * //     0 => 'foo'
+     * // }
+     * ```
+     *
      * @param {T} v Value to add to the collection
      */
     public add(v: T): void {
-        if ((v as any)["_key"])
+        if ((v as any)["_key"]) {
             this.set((v as any)["_key"], v);
-        else
+        } else {
             this.set(this.size, v);
+        }
     }
 
     /**
      * Add multiple items at once to the collection
-     * Works the same as with Collection#add() but with multiple items
      *
      * @since 0.3.3
      *
-     * @param {T[]} a The array with items
+     * @example
+     * ```ts
+     * const collection = new Collection<string>(String);
+     * collection.addMany(["foo", "bar", "baz", "123"]);
+     * collection.addMany({ "foo": "bar", "baz": "123" });
+     * // Collection {
+     * //     0 => 'foo',
+     * //     1 => 'bar',
+     * //     2 => 'baz',
+     * //     3 => '123',
+     * //     'foo' => 'bar',
+     * //     'baz' => '123'
+     * // }
+     * ```
+     *
+     * @param {T[] | Record<string|number|symbol, T>} x The array with items
      */
-    public addMany(a: T[]) {
-        for (let i = 0; i < a.length; i++) {
-            if ((a[i] as any)["_key"])
-                this.set((a[i] as any)["_key"], a[i]);
-            else
-                this.set(this.size, a[i]);
+    public addMany(x: T[] | Record<string|number|symbol, T>): void {
+        if (Array.isArray(x)) {
+            for (let i = 0; i < x.length; i++) {
+                this.set(this.size, x[i]);
+            }
+        } else if (x instanceof Object) {
+            for (const [key, value] of Object.entries(x)) {
+                this.set(key, value);
+            }
         }
     }
 
@@ -103,6 +130,13 @@ export class Collection<T> extends Map<string | number, T> {
      * Returns first matching Object or undefined if no match
      *
      * @since 0.1.0
+     *
+     * @example
+     * ```ts
+     * const collection = new Collection<string>(String, ["foo", "bar", "baz", "123"]);
+     * collection.find((item) => item === "foo");
+     * // "foo"
+     * ```
      *
      * @param {Function} fn A function that returns true if it matches the given param
      * @returns {T | undefined} The first matching object or undefined if none found
@@ -118,6 +152,16 @@ export class Collection<T> extends Map<string | number, T> {
      * Returns an Array with all the elements that make the function evaluate true
      *
      * @since 0.1.0
+     *
+     * @example
+     * ```ts
+     * const collection = new Collection<string>(String, ["foo", "bar", "baz", "123"]);
+     * collection.filter((item) => item.includes("a"));
+     * // [
+     * //     "bar",
+     * //     "baz"
+     * // ]
+     * ```
      *
      * @param {Function} fn A function that returns true if it matches the given param
      * @returns {T[]} An array with all the elements that evaluated true

@@ -1,1 +1,7 @@
 *.js linguist-detectable=false
+docs/**/*.js linguist-detectable=false
+lib/index.js linguist-detectable=false
+.eslintrc.js linguist-detectable=false
+jest.config.js linguist-detectable=false
+rollup.config.js linguist-detectable=false
+typedoc.js linguist-detectable=false

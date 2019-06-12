@@ -1,3 +1,5 @@
+docs/assets/js/main.js linguist-detectable=false
+docs/assets/js/search.js linguist-detectable=false
 lib/index.js linguist-detectable=false
 .eslintrc.js linguist-detectable=false
 jest.config.js linguist-detectable=false

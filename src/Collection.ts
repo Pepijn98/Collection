@@ -216,8 +216,8 @@ export class Collection<T> extends Map<string | number, T> {
         for (const [key, value] of this) {
             temp.set(key, value);
         }
-        for (const value of x.values()) {
-            temp.set(temp.size, value);
+        for (const [key, value] of x.entries()) {
+            temp.set(key, value);
         }
         return temp;
     }

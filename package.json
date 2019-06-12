@@ -1,6 +1,6 @@
 {
     "name": "@kurozero/collection",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "description": "A modern Collection implementation in TypeScript",
     "license": "MIT",
     "main": "lib/index",
@@ -44,16 +44,16 @@
     "dependencies": {},
     "devDependencies": {
         "@types/jest": "^24.0.13",
-        "@typescript-eslint/eslint-plugin": "^1.9.0",
-        "@typescript-eslint/parser": "^1.9.0",
+        "@typescript-eslint/eslint-plugin": "^1.10.2",
+        "@typescript-eslint/parser": "^1.10.2",
         "dts-bundle-generator": "^3.1.0",
         "eslint": "^5.16.0",
         "gts": "^1.0.0",
         "jest": "^24.8.0",
-        "rollup": "^1.13.1",
+        "rollup": "^1.15.1",
         "rollup-plugin-typescript": "^1.0.1",
         "ts-jest": "^24.0.2",
-        "tslib": "^1.9.3",
+        "tslib": "^1.10.0",
         "tslint": "^5.17.0",
         "typescript": "^3.5.1"
     }

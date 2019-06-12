@@ -60,8 +60,8 @@ export class Collection<T> extends Map<string | number, T> {
     public static merge(...collections: Collection<any>[]): Collection<any> {
         const temp = new Collection<any>();
         for (let i = 0; i < collections.length; i++) {
-            for (const value of collections[i].values()) {
-                temp.set(temp.size, value);
+            for (const [key, value] of collections[i].entries()) {
+                temp.set(key, value);
             }
         }
         return temp;

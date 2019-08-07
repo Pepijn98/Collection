@@ -213,11 +213,11 @@ export class Collection<T> extends Map<string | number, T> {
      */
     public merge(x: Collection<T>): Collection<T> {
         const temp = new Collection<T>();
-        for (const [key, value] of this) {
-            temp.set(key, value);
+        for (const [_, value] of this) {
+            temp.add(value);
         }
-        for (const [key, value] of x.entries()) {
-            temp.set(key, value);
+        for (const [_, value] of x) {
+            temp.add(value);
         }
         return temp;
     }

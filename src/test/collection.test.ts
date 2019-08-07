@@ -71,15 +71,12 @@ describe("Collection", () => {
         const collection = Collection.from(["foo", "bar", "baz", "test"]);
         const collection2 = Collection.from(["new1", "new2"]);
 
-        const shouldBe = new Collection<string>(String);
-        shouldBe.add("foo");
-        shouldBe.add("bar");
-        shouldBe.add("baz");
-        shouldBe.add("test");
-        shouldBe.add("new1");
-        shouldBe.add("new2");
-
+        const shouldBe = Collection.from(["foo", "bar", "baz", "test", "new1", "new2"]);
         const items = collection.merge(collection2);
+
+        console.log(collection);
+        console.log(collection2);
+        console.log(items);
 
         it("should merge both collections", () => {
             expect(items).toStrictEqual(shouldBe);

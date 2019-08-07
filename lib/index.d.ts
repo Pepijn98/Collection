@@ -110,6 +110,18 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 *
 	 * @param {Function} fn A function that returns a result
 	 * @returns {R[]} An array with the results
+	 *
+	 * @example
+	 * ```ts
+	 * const collection = new Collection<string>(String, ["foo", "bar", "baz", "123"]);
+	 * collection.map((v) => v.replace("a", "o"));
+	 * // [
+	 * //     "foo",
+	 * //     "bor",
+	 * //     "boz",
+	 * //     "123"
+	 * // ]
+	 * ```
 	 */
 	map<R>(fn: (v: T, i: number, a: Collection<T>) => R): R[];
 	/**

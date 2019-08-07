@@ -74,10 +74,6 @@ describe("Collection", () => {
         const shouldBe = Collection.from(["foo", "bar", "baz", "test", "new1", "new2"]);
         const items = collection.merge(collection2);
 
-        console.log(collection);
-        console.log(collection2);
-        console.log(items);
-
         it("should merge both collections", () => {
             expect(items).toStrictEqual(shouldBe);
         });

@@ -146,4 +146,30 @@ describe("Collection", () => {
             expect(result2).toBe(4);
         });
     });
+
+    describe("#array", () => {
+        const collection = new Collection<string>(String);
+        collection.addMany(["foo", "bar", "baz", "123"]);
+        it("should return an array with the values", () => {
+            const result = collection.array();
+            expect(result).toStrictEqual(["foo", "bar", "baz", "123"]);
+        });
+    });
+
+    describe("#object", () => {
+        const collection = new Collection<string>(String);
+        collection.addMany(["foo", "bar", "baz", "123"]);
+        it("should return an object with key values", () => {
+            const result = collection.object();
+            expect(result).toStrictEqual({ 0: "foo", 1: "bar", 2: "baz", 3: "123" });
+        });
+    });
+
+    describe("#isEmpty", () => {
+        const collection = new Collection<string>(String);
+        it("should return true if empty else false", () => {
+            const result = collection.isEmpty;
+            expect(result).toBe(true);
+        });
+    });
 });

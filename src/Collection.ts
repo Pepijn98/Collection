@@ -284,7 +284,6 @@ export class Collection<T> extends Map<string | number, T> {
         if (fn) {
             for (const [_, value] of this) {
                 if (fn(value)) return true;
-                else return false;
             }
             return false;
         } else {
@@ -304,7 +303,6 @@ export class Collection<T> extends Map<string | number, T> {
     public contains(element: T): boolean {
         for (const [_, value] of this) {
             if (element === value) return true;
-            else return false;
         }
         return false;
     }

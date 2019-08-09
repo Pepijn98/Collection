@@ -93,4 +93,57 @@ describe("Collection", () => {
             expect(collection.toString()).toBe("[Collection<String>]");
         });
     });
+
+    describe("#all", () => {
+        const collection = new Collection<string>(String);
+        collection.addMany(["foo", "bar", "baz", "123"]);
+        it("should return true if all values evaluate true", () => {
+            const result = collection.all((value) => typeof value === "string");
+            expect(result).toBe(true);
+        });
+    });
+
+    describe("#any", () => {
+        const collection = new Collection<string>(String);
+        collection.addMany(["foo", "bar", "baz", "123"]);
+        it("should return true if any value evaluates true", () => {
+            const result = collection.any((value) => value.includes("a"));
+            expect(result).toBe(true);
+
+            const result2 = collection.any();
+            expect(result2).toBe(true);
+        });
+    });
+
+    describe("#contains", () => {
+        const collection = new Collection<string>(String);
+        collection.addMany(["foo", "bar", "baz", "123"]);
+        it("should return true if value is in collection", () => {
+            const result = collection.contains("baz");
+            expect(result).toBe(true);
+        });
+    });
+
+    describe("#containsAll", () => {
+        const collection = new Collection<string>(String);
+        collection.addMany(["foo", "bar", "baz", "123"]);
+        const collection2 = new Collection<string>(String);
+        collection2.addMany(["foo", "bar", "baz", "123"]);
+        it("should return true if all values are in the collection", () => {
+            const result = collection.containsAll(collection2);
+            expect(result).toBe(true);
+        });
+    });
+
+    describe("#count", () => {
+        const collection = new Collection<string>(String);
+        collection.addMany(["foo", "bar", "baz", "123"]);
+        it("should return true if value is in collection", () => {
+            const result = collection.count((value) => value.includes("a"));
+            expect(result).toBe(2);
+
+            const result2 = collection.count();
+            expect(result2).toBe(4);
+        });
+    });
 });

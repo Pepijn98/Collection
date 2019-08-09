@@ -2,6 +2,8 @@ interface AbstractClass {
     name: string;
 }
 
+type Predicate<T> = (i: T) => boolean
+
 export class Collection<T> extends Map<string | number, T> {
     private TName: string;
 
@@ -27,6 +29,16 @@ export class Collection<T> extends Map<string | number, T> {
             }
         }
     }
+
+    /**
+     * @since 0.4.0
+     *
+     * @returns {boolean} true if collection is empty else false
+     */
+    public get isEmpty(): boolean {
+        return this.size === 0;
+    }
+
 
     /**
      * @since 0.2.0
@@ -131,7 +143,7 @@ export class Collection<T> extends Map<string | number, T> {
      *
      * Returns first matching Object or undefined if no match
      *
-     * @param {Function} fn A function that returns true if it matches the given param
+     * @param {Predicate<T>} fn A function that returns true if it matches the given param
      * @returns {T | undefined} The first matching object or undefined if none found
      *
      * @example
@@ -141,7 +153,7 @@ export class Collection<T> extends Map<string | number, T> {
      * // "foo"
      * ```
      */
-    public find(fn: (i: T) => boolean): T | undefined {
+    public find(fn: Predicate<T>): T | undefined {
         for (const item of this.values()) {
             if (fn(item)) return item;
         }
@@ -153,7 +165,7 @@ export class Collection<T> extends Map<string | number, T> {
      *
      * Returns an Array with all the elements that make the function evaluate true
      *
-     * @param {Function} fn A function that returns true if it matches the given param
+     * @param {Predicate<T>} fn A function that returns true if it matches the given param
      * @returns {T[]} An array with all the elements that evaluated true
      *
      * @example
@@ -166,7 +178,7 @@ export class Collection<T> extends Map<string | number, T> {
      * // ]
      * ```
      */
-    public filter(fn: (i: T) => boolean): T[] {
+    public filter(fn: Predicate<T>): T[] {
         const results: T[] = [];
         for (const item of this.values()) {
             if (fn(item)) results.push(item);
@@ -239,5 +251,130 @@ export class Collection<T> extends Map<string | number, T> {
      */
     public toString(): string {
         return `[Collection<${this.TName}>]`;
+    }
+
+    /**
+     * @since 0.4.0
+     *
+     * Returns true if all element matche predicate.
+     *
+     * @param {Predicate<T>} fn A function that returns a result
+     *
+     * @returns {boolean}
+     */
+    public all(fn: Predicate<T>): boolean {
+        let allTrue = false;
+        for (const [_, value] of this) {
+            if (fn(value)) allTrue = true;
+            else allTrue = false;
+        }
+        return allTrue;
+    }
+
+    /**
+     * @since 0.4.0
+     *
+     * Returns true if collection has at least one or if predicate is given true when atleast one element matches the predicate.
+     *
+     * @param {Predicate<T>} fn A function that returns a result
+     *
+     * @returns {boolean}
+     */
+    public any(fn?: Predicate<T> | null): boolean {
+        if (fn) {
+            for (const [_, value] of this) {
+                if (fn(value)) return true;
+                else return false;
+            }
+            return false;
+        } else {
+            return this.size >= 1;
+        }
+    }
+
+    /**
+     * @since 0.4.0
+     *
+     * Checks if element is in the collection
+     *
+     * @param {T} element Element you want to check
+     *
+     * @returns {boolean} true if element is in collection else false
+     */
+    public contains(element: T): boolean {
+        for (const [_, value] of this) {
+            if (element === value) return true;
+            else return false;
+        }
+        return false;
+    }
+
+    /**
+     * @since 0.4.0
+     *
+     * Checks if all values from given collection are in this collection
+     *
+     * @param {Collection<T>} collection The collection with values you want to check
+     *
+     * @returns {boolean} true if all values are in this collection else false
+     */
+    public containsAll(collection: Collection<T>): boolean {
+        let containsAll = false;
+        for (const [_, value] of collection) {
+            if (this.contains(value)) containsAll = true;
+            else containsAll = false;
+        }
+        return containsAll;
+    }
+
+    /**
+     * @since 0.4.0
+     *
+     * Gives the number of items in the collection, if predicate is given the number of items that evaluated true
+     *
+     * @param {Predicate<T>} fn A function that returns a result
+     *
+     * @returns {number}
+     */
+    public count(fn?: Predicate<T> | null): number {
+        if (fn) {
+            let i = 0
+            for (const [_, value] of this) {
+                if (fn(value)) i++;
+            }
+            return i;
+        } else {
+            return this.size;
+        }
+    }
+
+    /**
+     * @since 0.4.0
+     *
+     * Convert collection values to array
+     *
+     * @returns {T[]}
+     */
+    public array(): T[] {
+        const arr: T[] = [];
+        for (const value of this.values()) {
+            arr.push(value)
+        }
+        return arr;
+    }
+
+    /**
+     * @since 0.4.0
+     *
+     * Convert collection to object
+     *
+     * @returns {Record<string|number|symbol, T>}
+     */
+    public object(): Record<string|number|symbol, T> {
+        const obj: Record<string|number|symbol, T> = {};
+        for (const [key, value] of this) {
+            obj[key] = value;
+        }
+        return obj;
     }
 }

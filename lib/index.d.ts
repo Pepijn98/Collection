@@ -1,6 +1,7 @@
 export interface AbstractClass {
 	name: string;
 }
+export declare type Predicate<T> = (i: T) => boolean;
 export declare class Collection<T> extends Map<string | number, T> {
 	private TName;
 	/**
@@ -10,6 +11,12 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * @param {T[] | Record<string|number|symbol, T> | null} [from] Construct new Collection with items from array or object
 	 */
 	constructor(base?: AbstractClass | null, from?: T[] | Record<string | number | symbol, T> | null);
+	/**
+	 * @since 0.4.0
+	 *
+	 * @returns {boolean} true if collection is empty else false
+	 */
+	readonly isEmpty: boolean;
 	/**
 	 * @since 0.2.0
 	 *
@@ -73,7 +80,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 *
 	 * Returns first matching Object or undefined if no match
 	 *
-	 * @param {Function} fn A function that returns true if it matches the given param
+	 * @param {Predicate<T>} fn A function that returns true if it matches the given param
 	 * @returns {T | undefined} The first matching object or undefined if none found
 	 *
 	 * @example
@@ -83,13 +90,13 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * // "foo"
 	 * ```
 	 */
-	find(fn: (i: T) => boolean): T | undefined;
+	find(fn: Predicate<T>): T | undefined;
 	/**
 	 * @since 0.1.0
 	 *
 	 * Returns an Array with all the elements that make the function evaluate true
 	 *
-	 * @param {Function} fn A function that returns true if it matches the given param
+	 * @param {Predicate<T>} fn A function that returns true if it matches the given param
 	 * @returns {T[]} An array with all the elements that evaluated true
 	 *
 	 * @example
@@ -102,7 +109,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * // ]
 	 * ```
 	 */
-	filter(fn: (i: T) => boolean): T[];
+	filter(fn: Predicate<T>): T[];
 	/**
 	 * @since 0.1.0
 	 *
@@ -145,6 +152,72 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * @since 0.1.0
 	 */
 	toString(): string;
+	/**
+	 * @since 0.4.0
+	 *
+	 * Returns true if all element matche predicate.
+	 *
+	 * @param {Predicate<T>} fn A function that returns a result
+	 *
+	 * @returns {boolean}
+	 */
+	all(fn: Predicate<T>): boolean;
+	/**
+	 * @since 0.4.0
+	 *
+	 * Returns true if collection has at least one or if predicate is given true when atleast one element matches the predicate.
+	 *
+	 * @param {Predicate<T>} fn A function that returns a result
+	 *
+	 * @returns {boolean}
+	 */
+	any(fn?: Predicate<T> | null): boolean;
+	/**
+	 * @since 0.4.0
+	 *
+	 * Checks if element is in the collection
+	 *
+	 * @param {T} element Element you want to check
+	 *
+	 * @returns {boolean} true if element is in collection else false
+	 */
+	contains(element: T): boolean;
+	/**
+	 * @since 0.4.0
+	 *
+	 * Checks if all values from given collection are in this collection
+	 *
+	 * @param {Collection<T>} collection The collection with values you want to check
+	 *
+	 * @returns {boolean} true if all values are in this collection else false
+	 */
+	containsAll(collection: Collection<T>): boolean;
+	/**
+	 * @since 0.4.0
+	 *
+	 * Gives the number of items in the collection, if predicate is given the number of items that evaluated true
+	 *
+	 * @param {Predicate<T>} fn A function that returns a result
+	 *
+	 * @returns {number}
+	 */
+	count(fn?: Predicate<T> | null): number;
+	/**
+	 * @since 0.4.0
+	 *
+	 * Convert collection values to array
+	 *
+	 * @returns {T[]}
+	 */
+	array(): T[];
+	/**
+	 * @since 0.4.0
+	 *
+	 * Convert collection to object
+	 *
+	 * @returns {Record<string|number|symbol, T>}
+	 */
+	object(): Record<string | number | symbol, T>;
 }
 export default Collection;
 

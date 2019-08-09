@@ -2,17 +2,17 @@ import Collection from "../../";
 
 describe("Collection", () => {
     describe("#from()", () => {
-        const testColl1 = new Collection<string>(String);
-        testColl1.add("foo");
-        testColl1.add("bar");
-        testColl1.add("baz");
-        testColl1.add("test");
+        const coll1 = new Collection<string>(String);
+        coll1.add("foo");
+        coll1.add("bar");
+        coll1.add("baz");
+        coll1.add("test");
 
-        const testColl2 = new Collection<string>(String);
-        testColl2.set("foo", "foo");
-        testColl2.set("bar", "bar");
-        testColl2.set("baz", "baz");
-        testColl2.set("test", "test");
+        const coll2 = new Collection<string>(String);
+        coll2.set("foo", "foo");
+        coll2.set("bar", "bar");
+        coll2.set("baz", "baz");
+        coll2.set("test", "test");
 
         const arr = ["foo", "bar", "baz", "test"];
         const obj = { foo: "foo", bar: "bar", baz: "baz", test: "test" };
@@ -21,8 +21,8 @@ describe("Collection", () => {
             const collFromArr = Collection.from(arr);
             const collFromObj = Collection.from(obj);
 
-            expect(collFromArr).toStrictEqual(testColl1);
-            expect(collFromObj).toStrictEqual(testColl2);
+            expect(collFromArr).toStrictEqual(coll1);
+            expect(collFromObj).toStrictEqual(coll2);
         });
     });
 

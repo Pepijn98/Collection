@@ -12,6 +12,13 @@ export class Collection<T> extends Map<string | number, T> {
      *
      * @param {AbstractClass | null} [base] The type of the collection, even though it's optional it's better to always pass a param
      * @param {T[] | Record<string|number|symbol, T> | null} [from] Construct new Collection with items from array or object
+     * 
+     * @example
+     * ```ts
+     * const collection = new Collection<array>(null, ["foo", "bar", "baz"]);
+     * const collection = new Collection<array>(Array, ["foo", "bar", "baz"])
+     * const collection = new Collection<array>(Array)
+     * ```
      */
     public constructor(base?: AbstractClass | null, from?: T[] | Record<string|number|symbol, T> | null) {
         super();

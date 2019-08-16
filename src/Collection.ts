@@ -20,7 +20,7 @@ export class Collection<T> extends Map<string | number, T> {
      * const collection = new Collection<array>(Array)
      * ```
      */
-    public constructor(base?: AbstractClass | null, from?: T[] | Record<string|number|symbol, T> | null) {
+    public constructor(base?: AbstractClass | null, from?: T[] | Record<string | number | symbol, T> | null) {
         super();
         this.TName = base ? base.name : "any";
 
@@ -55,7 +55,7 @@ export class Collection<T> extends Map<string | number, T> {
      * @param {any[] | Record<string|number|symbol, any>} x The array you want to create a collection from
      * @returns {Collection<any>} The created collection
      */
-    public static from(x: any[] | Record<string|number|symbol, any>): Collection<any> {
+    public static from(x: any[] | Record<string | number | symbol, any>): Collection<any> {
         const col = new Collection();
         if (Array.isArray(x)) {
             for (let i = 0; i < x.length; i++) {
@@ -133,7 +133,7 @@ export class Collection<T> extends Map<string | number, T> {
      * // }
      * ```
      */
-    public addMany(x: T[] | Record<string|number|symbol, T>): void {
+    public addMany(x: T[] | Record<string | number | symbol, T>): void {
         if (Array.isArray(x)) {
             for (let i = 0; i < x.length; i++) {
                 this.set(this.size, x[i]);
@@ -375,8 +375,8 @@ export class Collection<T> extends Map<string | number, T> {
      *
      * @returns {Record<string|number|symbol, T>}
      */
-    public object(): Record<string|number|symbol, T> {
-        const obj: Record<string|number|symbol, T> = {};
+    public object(): Record<string | number | symbol, T> {
+        const obj: Record<string | number | symbol, T> = {};
         for (const [key, value] of this) {
             obj[key] = value;
         }

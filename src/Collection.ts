@@ -113,6 +113,7 @@ export class Collection<T> extends Map<string | number, T> {
 
     /**
      * @since 0.3.3
+     * @since 0.4.3 Added addMany from Collection
      *
      * Add multiple items at once to the collection
      *
@@ -133,8 +134,12 @@ export class Collection<T> extends Map<string | number, T> {
      * // }
      * ```
      */
-    public addMany(x: T[] | Record<string | number | symbol, T>): void {
-        if (Array.isArray(x)) {
+    public addMany(x: T[] | Record<string | number | symbol, T> | Collection<T>): void {
+        if (x instanceof Collection) {
+            for (const [key, value] of x.entries()) {
+                this.set(key, value);
+            }
+        } else if (Array.isArray(x)) {
             for (let i = 0; i < x.length; i++) {
                 this.set(this.size, x[i]);
             }

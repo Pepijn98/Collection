@@ -61,6 +61,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	add(v: T): void;
 	/**
 	 * @since 0.3.3
+	 * @since 0.4.3 Added addMany from Collection
 	 *
 	 * Add multiple items at once to the collection
 	 *
@@ -81,7 +82,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * // }
 	 * ```
 	 */
-	addMany(x: T[] | Record<string | number | symbol, T>): void;
+	addMany(x: T[] | Record<string | number | symbol, T> | Collection<T>): void;
 	/**
 	 * @since 0.1.0
 	 *

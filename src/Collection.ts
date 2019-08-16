@@ -1,3 +1,5 @@
+import { isObjLiteral } from "./utils";
+
 interface AbstractClass {
     name: string;
 }
@@ -29,7 +31,7 @@ export class Collection<T> extends Map<string | number, T> {
                 for (let i = 0; i < from.length; i++) {
                     this.set(i, from[i]);
                 }
-            } else if (from instanceof Object) {
+            } else if (isObjLiteral(from)) {
                 for (const [key, value] of Object.entries(from)) {
                     this.set(key, value);
                 }
@@ -61,7 +63,7 @@ export class Collection<T> extends Map<string | number, T> {
             for (let i = 0; i < x.length; i++) {
                 col.set(i, x[i]);
             }
-        } else if (x instanceof Object) {
+        } else if (isObjLiteral(x)) {
             for (const [key, value] of Object.entries(x)) {
                 col.set(key, value);
             }
@@ -143,7 +145,7 @@ export class Collection<T> extends Map<string | number, T> {
             for (let i = 0; i < x.length; i++) {
                 this.set(this.size, x[i]);
             }
-        } else if (x instanceof Object) {
+        } else if (isObjLiteral(x)) {
             for (const [key, value] of Object.entries(x)) {
                 this.set(key, value);
             }

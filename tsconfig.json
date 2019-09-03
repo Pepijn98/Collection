@@ -16,7 +16,8 @@
         "sourceMap": false,
         "strict": true,
         "rootDir": "src",
-        "outDir": "lib"
+        "outDir": "lib",
+        "noEmit": true
     },
     "exclude": [
         "node_modules"

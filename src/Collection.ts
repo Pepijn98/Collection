@@ -334,7 +334,7 @@ export class Collection<T> extends Map<string | number, T> {
         let containsAll = false;
         for (const [_, value] of collection) {
             if (this.contains(value)) containsAll = true;
-            else containsAll = false;
+            else return false;
         }
         return containsAll;
     }

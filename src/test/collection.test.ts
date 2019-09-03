@@ -147,7 +147,7 @@ describe("Collection", () => {
         });
     });
 
-    describe("#array", () => {
+    describe("#asArray", () => {
         const collection = new Collection<string>(String);
         collection.addMany(["foo", "bar", "baz", "123"]);
         it("should return an array with the values", () => {
@@ -156,7 +156,7 @@ describe("Collection", () => {
         });
     });
 
-    describe("#object", () => {
+    describe("#asObject", () => {
         const collection = new Collection<string>(String);
         collection.addMany(["foo", "bar", "baz", "123"]);
         it("should return an object with key values", () => {

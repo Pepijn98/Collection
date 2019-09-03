@@ -168,8 +168,10 @@ describe("Collection", () => {
     describe("#isEmpty", () => {
         const collection = new Collection<string>(String);
         it("should return true if empty else false", () => {
-            const result = collection.isEmpty;
-            expect(result).toBe(true);
+            expect(collection.isEmpty).toBe(true);
+
+            collection.add("foo");
+            expect(collection.isEmpty).toBe(false);
         });
     });
 });

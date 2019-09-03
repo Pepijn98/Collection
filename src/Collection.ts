@@ -48,6 +48,40 @@ export class Collection<T> extends Map<string | number, T> {
         return this.size === 0;
     }
 
+    /**
+     * @since 0.4.0
+     * 
+     * @since 0.4.7 make getter and rename
+     *
+     * Convert collection values to array
+     *
+     * @returns {T[]}
+     */
+    public get asArray(): T[] {
+        const arr: T[] = [];
+        for (const value of this.values()) {
+            arr.push(value)
+        }
+        return arr;
+    }
+
+    /**
+     * @since 0.4.0
+     * 
+     * @since 0.4.7 make getter and rename
+     *
+     * Convert collection to object
+     *
+     * @returns {Record<string|number|symbol, T>}
+     */
+    public get asObject(): Record<string | number | symbol, T> {
+        const obj: Record<string | number | symbol, T> = {};
+        for (const [key, value] of this) {
+            obj[key] = value;
+        }
+        return obj;
+    }
+
 
     /**
      * @since 0.2.0
@@ -358,35 +392,5 @@ export class Collection<T> extends Map<string | number, T> {
         } else {
             return this.size;
         }
-    }
-
-    /**
-     * @since 0.4.0
-     *
-     * Convert collection values to array
-     *
-     * @returns {T[]}
-     */
-    public array(): T[] {
-        const arr: T[] = [];
-        for (const value of this.values()) {
-            arr.push(value)
-        }
-        return arr;
-    }
-
-    /**
-     * @since 0.4.0
-     *
-     * Convert collection to object
-     *
-     * @returns {Record<string|number|symbol, T>}
-     */
-    public object(): Record<string | number | symbol, T> {
-        const obj: Record<string | number | symbol, T> = {};
-        for (const [key, value] of this) {
-            obj[key] = value;
-        }
-        return obj;
     }
 }

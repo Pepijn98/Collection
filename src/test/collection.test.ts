@@ -151,7 +151,7 @@ describe("Collection", () => {
         const collection = new Collection<string>(String);
         collection.addMany(["foo", "bar", "baz", "123"]);
         it("should return an array with the values", () => {
-            const result = collection.array();
+            const result = collection.asArray;
             expect(result).toStrictEqual(["foo", "bar", "baz", "123"]);
         });
     });
@@ -160,7 +160,7 @@ describe("Collection", () => {
         const collection = new Collection<string>(String);
         collection.addMany(["foo", "bar", "baz", "123"]);
         it("should return an object with key values", () => {
-            const result = collection.object();
+            const result = collection.asObject;
             expect(result).toStrictEqual({ 0: "foo", 1: "bar", 2: "baz", 3: "123" });
         });
     });

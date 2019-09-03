@@ -25,6 +25,26 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 */
 	readonly isEmpty: boolean;
 	/**
+	 * @since 0.4.0
+	 *
+	 * @since 0.4.7 make getter and rename
+	 *
+	 * Convert collection values to array
+	 *
+	 * @returns {T[]}
+	 */
+	readonly asArray: T[];
+	/**
+	 * @since 0.4.0
+	 *
+	 * @since 0.4.7 make getter and rename
+	 *
+	 * Convert collection to object
+	 *
+	 * @returns {Record<string|number|symbol, T>}
+	 */
+	readonly asObject: Record<string | number | symbol, T>;
+	/**
 	 * @since 0.2.0
 	 *
 	 * Create a Collection from an Array or Object
@@ -210,22 +230,6 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * @returns {number}
 	 */
 	count(fn?: Predicate<T> | null): number;
-	/**
-	 * @since 0.4.0
-	 *
-	 * Convert collection values to array
-	 *
-	 * @returns {T[]}
-	 */
-	array(): T[];
-	/**
-	 * @since 0.4.0
-	 *
-	 * Convert collection to object
-	 *
-	 * @returns {Record<string|number|symbol, T>}
-	 */
-	object(): Record<string | number | symbol, T>;
 }
 export default Collection;
 

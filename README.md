@@ -35,13 +35,9 @@ https://kurozeropb.github.io/Collection/
 const { Collection } = require("@kurozero/collection");
 
 /* Create a Collection from an existing Object */
-const obj = {
-    "foo": "bar",
-    "test": "123",
-    "abc": "def"
-};
-const objCol = Collection.from(obj);
-console.log(objCol);
+const obj = { "foo": "bar", "test": "123", "abc": "def" };
+const collection = Collection.from(obj);
+console.log(collection);
 // Collection {
 //     'foo' => 'bar',
 //     'test' => '123',
@@ -55,15 +51,9 @@ console.log(objCol);
 const { Collection } = require("@kurozero/collection");
 
 /* Create a Collection from an existing Array */
-const arr = [
-    "foo",
-    "bar",
-    "baz",
-    "test",
-    "123"
-];
-const arrCol = Collection.from(arr);
-console.log(arrCol);
+const arr = ["foo", "bar", "baz", "test", "123"];
+const collection = Collection.from(arr);
+console.log(collection);
 // Collection {
 //     0 => 'foo',
 //     1 => 'bar',
@@ -80,22 +70,23 @@ const { Collection } = require("@kurozero/collection");
 
 class Car {
     constructor(details) {
+        this._key = details.name; // _key will be used as the collection key
         this.name = details.name;
         this.brand = details.brand;
     }
 }
 
-const cars = new Collection(Car);
+const cars = new Collection<Car>(Car);
 cars.add(new Car({ name: "A6", brand: "Audi" }));
 cars.add(new Car({ name: "A1", brand: "Audi" }));
 cars.add(new Car({ name: "A3", brand: "Audi" }));
 cars.add(new Car({ name: "Polo", brand: "Volkswagen" }));
 console.log(cars);
 // Collection {
-//     0 => Car { name: 'A6', brand: 'Audi' },
-//     1 => Car { name: 'A1', brand: 'Audi' },
-//     2 => Car { name: 'A3', brand: 'Audi' },
-//     3 => Car { name: 'Polo', brand: 'Volkswagen' }
+//     "A6" => Car { name: 'A6', brand: 'Audi' },
+//     "A1" => Car { name: 'A1', brand: 'Audi' },
+//     "A3" => Car { name: 'A3', brand: 'Audi' },
+//     "Polo" => Car { name: 'Polo', brand: 'Volkswagen' }
 // }
 
 const audis = cars.filter((car) => car.brand === "Audi");

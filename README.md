@@ -26,9 +26,12 @@
 
 # Collection
 
-#### Docs
+### Docs
 https://kurozeropb.github.io/Collection/
 
+
+### Installation
+`yarn add @kurozero/collection` or `npm i @kurozero/collection`
 
 ### Examples
 ```js

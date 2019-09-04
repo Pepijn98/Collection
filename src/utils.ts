@@ -1,3 +1,9 @@
+/**
+ * @ignore
+ * @hidden
+ * 
+ * @param _obj 
+ */
 export function _isObjLiteral<T>(_obj: Record<string | number | symbol, T>) {
     var _test = _obj;
     return (typeof _obj !== 'object' || _obj === null ? false : ((function () {

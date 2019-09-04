@@ -82,17 +82,28 @@ export class Collection<T> extends Map<string | number, T> {
         return obj;
     }
 
-
     /**
      * @since 0.2.0
+     * 
+     * @since 0.4.8 Add generic type to static method
      *
      * Create a Collection from an Array or Object
      *
-     * @param {any[] | Record<string|number|symbol, any>} x The array you want to create a collection from
-     * @returns {Collection<any>} The created collection
+     * @param {T[] | Record<string|number|symbol, T>} x The array you want to create a collection from
+     * @returns {Collection<T>} The created collection
+     * 
+     * @example
+     * ```ts
+     * const col = Collection.from<string>(["foo", "bar", "baz"]);
+     * // Collection {
+     * //     0 => 'foo',
+     * //     1 => 'bar',
+     * //     2 => 'baz'
+     * // }
+     * ```
      */
-    public static from(x: any[] | Record<string | number | symbol, any>): Collection<any> {
-        const col = new Collection();
+    public static from<T>(x: T[] | Record<string | number | symbol, T>): Collection<T> {
+        const col = new Collection<T>();
         if (Array.isArray(x)) {
             for (let i = 0; i < x.length; i++) {
                 col.set(i, x[i]);
@@ -107,13 +118,28 @@ export class Collection<T> extends Map<string | number, T> {
 
     /**
      * @since 0.3.4
+     * 
+     * @since 0.4.8 Add generic type to static method
      *
      * Merge multiple collections together
      *
      * @param {Collection<any>[]} collections All the collections you want to merge together
+     * 
+     * @example
+     * ```ts
+     * const col1 = new Collection<string>(String, ["foo", "bar"]);
+     * const col2 = new Collection<string>(String, ["baz"]);
+     * 
+     * const col3 = Collection.merge(col1, col2);
+     * // Collection {
+     * //     0 => 'foo',
+     * //     1 => 'bar',
+     * //     2 => 'baz'
+     * // }
+     * ```
      */
-    public static merge(...collections: Collection<any>[]): Collection<any> {
-        const temp = new Collection<any>();
+    public static merge<T>(...collections: Collection<T>[]): Collection<T> {
+        const temp = new Collection<T>();
         for (let i = 0; i < collections.length; i++) {
             for (const [key, value] of collections[i].entries()) {
                 temp.set(key, value);
@@ -270,6 +296,19 @@ export class Collection<T> extends Map<string | number, T> {
      *
      * @param {Collection<T>} x A collection to merge together with this
      * @returns {Collection<T>} The merged collection
+     * 
+     * @example
+     * ```ts
+     * const col1 = Collection.from<string>(["foo", "bar"]);
+     * const col2 = Collection.from<string>(["baz"]);
+     * 
+     * col1.merge(col2);
+     * // Collection {
+     * //     0 => 'foo',
+     * //     1 => 'bar',
+     * //     2 => 'baz'
+     * // }
+     * ```
      */
     public merge(x: Collection<T>): Collection<T> {
         const temp = new Collection<T>();
@@ -309,6 +348,13 @@ export class Collection<T> extends Map<string | number, T> {
      * @param {Predicate<T>} fn A function that returns a result
      *
      * @returns {boolean}
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * const result = collection.all((value) => typeof value === "string");
+     * // => true, all the items in the collection are strings
+     * ```
      */
     public all(fn: Predicate<T>): boolean {
         let allTrue = false;
@@ -327,6 +373,13 @@ export class Collection<T> extends Map<string | number, T> {
      * @param {Predicate<T>} fn A function that returns a result
      *
      * @returns {boolean}
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * const result = collection.any((value) => value.includes("a"));
+     * // => true, collection has atleast 1 item that includes an "a"
+     * ```
      */
     public any(fn?: Predicate<T> | null): boolean {
         if (fn) {
@@ -347,6 +400,13 @@ export class Collection<T> extends Map<string | number, T> {
      * @param {T} element Element you want to check
      *
      * @returns {boolean} true if element is in collection else false
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * const result = collection.contains("baz");
+     * // => true, collection has an item that is "baz"
+     * ```
      */
     public contains(element: T): boolean {
         for (const [_, value] of this) {
@@ -363,6 +423,14 @@ export class Collection<T> extends Map<string | number, T> {
      * @param {Collection<T>} collection The collection with values you want to check
      *
      * @returns {boolean} true if all values are in this collection else false
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * const collection2 = Collection.from<string>(["foo", "bar", "baz", "123"]);
+     * const result = collection.containsAll(collection2);
+     * // => false, 123 does not exist in collection
+     * ```
      */
     public containsAll(collection: Collection<T>): boolean {
         let containsAll = false;
@@ -381,6 +449,13 @@ export class Collection<T> extends Map<string | number, T> {
      * @param {Predicate<T>} fn A function that returns a result
      *
      * @returns {number}
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * const result = collection.count((value) => value.includes("a"));
+     * // => 2, only 2 items include an "a"
+     * ```
      */
     public count(fn?: Predicate<T> | null): number {
         if (fn) {

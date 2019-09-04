@@ -1,6 +1,6 @@
 {
     "name": "@kurozero/collection",
-    "version": "0.4.7",
+    "version": "0.4.8",
     "description": "A modern Collection implementation in TypeScript",
     "license": "MIT",
     "main": "lib/index",

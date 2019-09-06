@@ -89,22 +89,22 @@
 					<h1>Collection</h1>
 				</a>
 				<a href="#docs" id="docs" style="color: inherit; text-decoration: none;">
-					<h4>Docs</h4>
+					<h3>Docs</h3>
 				</a>
 				<p><a href="https://kurozeropb.github.io/Collection/">https://kurozeropb.github.io/Collection/</a></p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h3>Installation</h3>
+				</a>
+				<p><code>yarn add @kurozero/collection</code> or <code>npm i @kurozero/collection</code></p>
 				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
 					<h3>Examples</h3>
 				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> { Collection } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@kurozero/collection"</span>);
 
 <span class="hljs-comment">/* Create a Collection from an existing Object */</span>
-<span class="hljs-keyword">const</span> obj = {
-    <span class="hljs-string">"foo"</span>: <span class="hljs-string">"bar"</span>,
-    <span class="hljs-string">"test"</span>: <span class="hljs-string">"123"</span>,
-    <span class="hljs-string">"abc"</span>: <span class="hljs-string">"def"</span>
-};
-<span class="hljs-keyword">const</span> objCol = Collection.from(obj);
-<span class="hljs-built_in">console</span>.log(objCol);
+<span class="hljs-keyword">const</span> obj = { <span class="hljs-string">"foo"</span>: <span class="hljs-string">"bar"</span>, <span class="hljs-string">"test"</span>: <span class="hljs-string">"123"</span>, <span class="hljs-string">"abc"</span>: <span class="hljs-string">"def"</span> };
+<span class="hljs-keyword">const</span> collection = Collection.from(obj);
+<span class="hljs-built_in">console</span>.log(collection);
 <span class="hljs-comment">// Collection {</span>
 <span class="hljs-comment">//     'foo' =&gt; 'bar',</span>
 <span class="hljs-comment">//     'test' =&gt; '123',</span>
@@ -114,15 +114,9 @@
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> { Collection } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@kurozero/collection"</span>);
 
 <span class="hljs-comment">/* Create a Collection from an existing Array */</span>
-<span class="hljs-keyword">const</span> arr = [
-    <span class="hljs-string">"foo"</span>,
-    <span class="hljs-string">"bar"</span>,
-    <span class="hljs-string">"baz"</span>,
-    <span class="hljs-string">"test"</span>,
-    <span class="hljs-string">"123"</span>
-];
-<span class="hljs-keyword">const</span> arrCol = Collection.from(arr);
-<span class="hljs-built_in">console</span>.log(arrCol);
+<span class="hljs-keyword">const</span> arr = [<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>, <span class="hljs-string">"test"</span>, <span class="hljs-string">"123"</span>];
+<span class="hljs-keyword">const</span> collection = Collection.from(arr);
+<span class="hljs-built_in">console</span>.log(collection);
 <span class="hljs-comment">// Collection {</span>
 <span class="hljs-comment">//     0 =&gt; 'foo',</span>
 <span class="hljs-comment">//     1 =&gt; 'bar',</span>
@@ -135,22 +129,23 @@
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> </span>{
     <span class="hljs-keyword">constructor</span>(details) {
+        <span class="hljs-keyword">this</span>._key = details.name; <span class="hljs-comment">// _key will be used as the collection key</span>
         <span class="hljs-keyword">this</span>.name = details.name;
         <span class="hljs-keyword">this</span>.brand = details.brand;
     }
 }
 
-<span class="hljs-keyword">const</span> cars = <span class="hljs-keyword">new</span> Collection(Car);
+<span class="hljs-keyword">const</span> cars = <span class="hljs-keyword">new</span> Collection&lt;Car&gt;(Car);
 cars.add(<span class="hljs-keyword">new</span> Car({ <span class="hljs-attr">name</span>: <span class="hljs-string">"A6"</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">"Audi"</span> }));
 cars.add(<span class="hljs-keyword">new</span> Car({ <span class="hljs-attr">name</span>: <span class="hljs-string">"A1"</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">"Audi"</span> }));
 cars.add(<span class="hljs-keyword">new</span> Car({ <span class="hljs-attr">name</span>: <span class="hljs-string">"A3"</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">"Audi"</span> }));
 cars.add(<span class="hljs-keyword">new</span> Car({ <span class="hljs-attr">name</span>: <span class="hljs-string">"Polo"</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">"Volkswagen"</span> }));
 <span class="hljs-built_in">console</span>.log(cars);
 <span class="hljs-comment">// Collection {</span>
-<span class="hljs-comment">//     0 =&gt; Car { name: 'A6', brand: 'Audi' },</span>
-<span class="hljs-comment">//     1 =&gt; Car { name: 'A1', brand: 'Audi' },</span>
-<span class="hljs-comment">//     2 =&gt; Car { name: 'A3', brand: 'Audi' },</span>
-<span class="hljs-comment">//     3 =&gt; Car { name: 'Polo', brand: 'Volkswagen' }</span>
+<span class="hljs-comment">//     "A6" =&gt; Car { name: 'A6', brand: 'Audi' },</span>
+<span class="hljs-comment">//     "A1" =&gt; Car { name: 'A1', brand: 'Audi' },</span>
+<span class="hljs-comment">//     "A3" =&gt; Car { name: 'A3', brand: 'Audi' },</span>
+<span class="hljs-comment">//     "Polo" =&gt; Car { name: 'Polo', brand: 'Volkswagen' }</span>
 <span class="hljs-comment">// }</span>
 
 <span class="hljs-keyword">const</span> audis = cars.filter(<span class="hljs-function">(<span class="hljs-params">car</span>) =&gt;</span> car.brand === <span class="hljs-string">"Audi"</span>);

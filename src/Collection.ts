@@ -43,6 +43,12 @@ export class Collection<T> extends Map<string | number, T> {
      * @since 0.4.0
      *
      * @returns {boolean} true if collection is empty else false
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * collection.isEmpty // => false
+     * ```
      */
     public get isEmpty(): boolean {
         return this.size === 0;
@@ -56,6 +62,12 @@ export class Collection<T> extends Map<string | number, T> {
      * Convert collection values to array
      *
      * @returns {T[]}
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * collection.asArray // => ["foo", "bar", "baz"]
+     * ```
      */
     public get asArray(): T[] {
         const arr: T[] = [];
@@ -73,6 +85,12 @@ export class Collection<T> extends Map<string | number, T> {
      * Convert collection to object
      *
      * @returns {Record<string|number|symbol, T>}
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * collection.asObject // => {0: "foo", 1: "bar", 2: "baz"}
+     * ```
      */
     public get asObject(): Record<string | number | symbol, T> {
         const obj: Record<string | number | symbol, T> = {};
@@ -327,6 +345,12 @@ export class Collection<T> extends Map<string | number, T> {
      * Returns a random Object from the Collection or undefined if the Collection is empty
      *
      * @returns {T|undefined} The random object or undefined if none exist
+     * 
+     * @example
+     * ```ts
+     * const collection = Collection.from<string>(["foo", "bar", "baz"]);
+     * collection.random(); // => will return 1 of foo, bar or baz
+     * ```
      */
     public random(): T | undefined {
         if (!this.size) return undefined;
@@ -335,6 +359,12 @@ export class Collection<T> extends Map<string | number, T> {
 
     /**
      * @since 0.1.0
+     * 
+     * @example
+     * ```ts
+     * const collection = new Collection<string>(String, ["foo", "bar", "baz"]);
+     * collection.toString(); // => [Collection<String>]
+     * ```
      */
     public toString(): string {
         return `[Collection<${this.TName}>]`;

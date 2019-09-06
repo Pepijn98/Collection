@@ -154,7 +154,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L10">Collection.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L10">Collection.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -230,7 +230,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L60">Collection.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L72">Collection.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -241,6 +241,10 @@
 									<dt>since</dt>
 									<dd><p>0.4.7 make getter and rename</p>
 										<p>Convert collection values to array</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
+collection.asArray <span class="hljs-comment">// =&gt; ["foo", "bar", "baz"]</span></code></pre>
 									</dd>
 								</dl>
 							</div>
@@ -258,7 +262,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L77">Collection.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L95">Collection.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -269,6 +273,10 @@
 									<dt>since</dt>
 									<dd><p>0.4.7 make getter and rename</p>
 										<p>Convert collection to object</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
+collection.asObject <span class="hljs-comment">// =&gt; {0: "foo", 1: "bar", 2: "baz"}</span></code></pre>
 									</dd>
 								</dl>
 							</div>
@@ -286,13 +294,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L47">Collection.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L53">Collection.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>since</dt>
 									<dd><p>0.4.0</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
+collection.isEmpty <span class="hljs-comment">// =&gt; false</span></code></pre>
 									</dd>
 								</dl>
 							</div>
@@ -337,7 +349,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L168">Collection.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L186">Collection.ts:186</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,7 +391,7 @@ collection.add(<span class="hljs-string">"foo"</span>);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L199">Collection.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L217">Collection.ts:217</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -429,7 +441,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L359">Collection.ts:359</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L389">Collection.ts:389</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -468,7 +480,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L384">Collection.ts:384</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L414">Collection.ts:414</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -525,7 +537,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L411">Collection.ts:411</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L441">Collection.ts:441</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -565,7 +577,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L435">Collection.ts:435</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L465">Collection.ts:465</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -606,7 +618,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L460">Collection.ts:460</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L490">Collection.ts:490</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -692,7 +704,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L255">Collection.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L273">Collection.ts:273</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -735,7 +747,7 @@ collection.filter(<span class="hljs-function">(<span class="hljs-params">item</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L230">Collection.ts:230</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L248">Collection.ts:248</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -903,7 +915,7 @@ collection.find(<span class="hljs-function">(<span class="hljs-params">item</spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L283">Collection.ts:283</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L301">Collection.ts:301</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -978,7 +990,7 @@ collection.map(<span class="hljs-function">(<span class="hljs-params">v</span>) 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L313">Collection.ts:313</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L331">Collection.ts:331</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1024,7 +1036,7 @@ col1.merge(col2);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L331">Collection.ts:331</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L355">Collection.ts:355</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1032,6 +1044,10 @@ col1.merge(col2);
 									<dt>since</dt>
 									<dd><p>0.1.0</p>
 										<p>Returns a random Object from the Collection or undefined if the Collection is empty</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
+collection.random(); <span class="hljs-comment">// =&gt; will return 1 of foo, bar or baz</span></code></pre>
 									</dd>
 								</dl>
 							</div>
@@ -1080,13 +1096,17 @@ col1.merge(col2);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L339">Collection.ts:339</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L369">Collection.ts:369</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>since</dt>
 									<dd><p>0.1.0</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = <span class="hljs-keyword">new</span> Collection&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-built_in">String</span>, [<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
+collection.toString(); <span class="hljs-comment">// =&gt; [Collection&lt;String&gt;]</span></code></pre>
 									</dd>
 								</dl>
 							</div>
@@ -1127,7 +1147,7 @@ col1.merge(col2);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L105">Collection.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L123">Collection.ts:123</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1179,7 +1199,7 @@ col1.merge(col2);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/1c36846/src/Collection.ts#L141">Collection.ts:141</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L159">Collection.ts:159</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

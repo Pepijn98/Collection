@@ -26,53 +26,71 @@
 
 # Collection
 
-### Docs
+## Docs
 https://kurozeropb.github.io/Collection/
 
+## Browser
+https://unpkg.com/collection@{VERSION}/lib/index.min.js
+```html
+<!DOCTYPE html>
 
-### Installation
-`yarn add @kurozero/collection` or `npm i @kurozero/collection`
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Cars">
+        <meta name="keywords" content="HTML,JavaScript,Cars">
+        <meta name="author" content="KurozeroPB">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cars</title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/collection@{VERSION}/lib/index.min.js"></script>
+        <script lang="javascript">
+            class Car {
+                constructor(details) {
+                    this._key = details.name; // _key will be used as the collection key
+                    this.name = details.name;
+                    this.brand = details.brand;
+                }
+            }
 
-### Examples
-```js
-const { Collection } = require("@kurozero/collection");
+            const cars = new Collection(Car, [
+                new Car({ name: "A6", brand: "Audi" }),
+                new Car({ name: "A1", brand: "Audi" }),
+                new Car({ name: "A3", brand: "Audi" }),
+                new Car({ name: "Polo", brand: "Volkswagen" })
+            ]);
 
-/* Create a Collection from an existing Object */
-const obj = { "foo": "bar", "test": "123", "abc": "def" };
-const collection = Collection.from(obj);
-console.log(collection);
-// Collection {
-//     'foo' => 'bar',
-//     'test' => '123',
-//     'abc' => 'def'
-// }
+            const audis = cars.filter((car) => car.brand === "Audi");
+            console.log(audis);
+            // [
+            //     Car { name: 'A6', brand: 'Audi' },
+            //     Car { name: 'A1', brand: 'Audi' },
+            //     Car { name: 'A3', brand: 'Audi' }
+            // ]
+        </script>
+    </body>
+</html>
 ```
 
 <br/><br/>
 
-```js
-const { Collection } = require("@kurozero/collection");
+## Node
+`yarn add @kurozero/collection` or `npm i --save @kurozero/collection`
+```ts
+import Collection from "@kurozero/collection";
 
-/* Create a Collection from an existing Array */
-const arr = ["foo", "bar", "baz", "test", "123"];
-const collection = Collection.from(arr);
-console.log(collection);
-// Collection {
-//     0 => 'foo',
-//     1 => 'bar',
-//     2 => 'baz',
-//     3 => 'test',
-//     4 => '123'
-// }
-```
-
-<br/><br/>
-
-```js
-const { Collection } = require("@kurozero/collection");
+interface ICarDetails {
+    name: string;
+    brand: string;
+}
 
 class Car {
-    constructor(details) {
+    public _key: string;
+    public name: string;
+    public brand: string;
+
+    public constructor(details: ICarDetails) {
         this._key = details.name; // _key will be used as the collection key
         this.name = details.name;
         this.brand = details.brand;
@@ -80,17 +98,12 @@ class Car {
 }
 
 const cars = new Collection<Car>(Car);
-cars.add(new Car({ name: "A6", brand: "Audi" }));
-cars.add(new Car({ name: "A1", brand: "Audi" }));
-cars.add(new Car({ name: "A3", brand: "Audi" }));
-cars.add(new Car({ name: "Polo", brand: "Volkswagen" }));
-console.log(cars);
-// Collection {
-//     "A6" => Car { name: 'A6', brand: 'Audi' },
-//     "A1" => Car { name: 'A1', brand: 'Audi' },
-//     "A3" => Car { name: 'A3', brand: 'Audi' },
-//     "Polo" => Car { name: 'Polo', brand: 'Volkswagen' }
-// }
+cars.addMany([
+    new Car({ name: "A6", brand: "Audi" }),
+    new Car({ name: "A1", brand: "Audi" }),
+    new Car({ name: "A3", brand: "Audi" }),
+    new Car({ name: "Polo", brand: "Volkswagen" })
+]);
 
 const audis = cars.filter((car) => car.brand === "Audi");
 console.log(audis);

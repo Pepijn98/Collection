@@ -104,8 +104,6 @@
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="collection.html#asarray" class="tsd-kind-icon">as<wbr>Array</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="collection.html#asobject" class="tsd-kind-icon">as<wbr>Object</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="collection.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
 							</ul>
 						</section>
@@ -132,7 +130,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="collection.html#map-1" class="tsd-kind-icon">map</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="collection.html#merge" class="tsd-kind-icon">merge</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="collection.html#random" class="tsd-kind-icon">random</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="collection.html#remove" class="tsd-kind-icon">remove</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="collection.html#set" class="tsd-kind-icon">set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="collection.html#toarray" class="tsd-kind-icon">to<wbr>Array</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="collection.html#toobject" class="tsd-kind-icon">to<wbr>Object</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="collection.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="collection.html#values" class="tsd-kind-icon">values</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="collection.html#from" class="tsd-kind-icon">from</a></li>
@@ -154,7 +155,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L10">Collection.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L73">Collection.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,7 +193,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Map.[Symbol.toStringTag]</p>
 						<ul>
-							<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:130</li>
+							<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:130</li>
 						</ul>
 					</aside>
 				</section>
@@ -203,7 +204,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Map.size</p>
 						<ul>
-							<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.collection.d.ts:28</li>
+							<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.collection.d.ts:28</li>
 						</ul>
 					</aside>
 				</section>
@@ -213,77 +214,13 @@
 					<div class="tsd-signature tsd-kind-icon">Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MapConstructor</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.collection.d.ts:36</li>
+							<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.collection.d.ts:36</li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="asarray" class="tsd-anchor"></a>
-					<h3>as<wbr>Array</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> asArray<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L72">Collection.ts:72</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>since</dt>
-									<dd><p>0.4.0</p>
-									</dd>
-									<dt>since</dt>
-									<dd><p>0.4.7 make getter and rename</p>
-										<p>Convert collection values to array</p>
-									</dd>
-									<dt>example</dt>
-									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
-collection.asArray <span class="hljs-comment">// =&gt; ["foo", "bar", "baz"]</span></code></pre>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="asobject" class="tsd-anchor"></a>
-					<h3>as<wbr>Object</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> asObject<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L95">Collection.ts:95</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>since</dt>
-									<dd><p>0.4.0</p>
-									</dd>
-									<dt>since</dt>
-									<dd><p>0.4.7 make getter and rename</p>
-										<p>Convert collection to object</p>
-									</dd>
-									<dt>example</dt>
-									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
-collection.asObject <span class="hljs-comment">// =&gt; {0: "foo", 1: "bar", 2: "baz"}</span></code></pre>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
 					<a name="isempty" class="tsd-anchor"></a>
 					<h3>is<wbr>Empty</h3>
@@ -294,7 +231,7 @@ collection.asObject <span class="hljs-comment">// =&gt; {0: "foo", 1: "bar", 2: 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L53">Collection.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L116">Collection.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -327,7 +264,7 @@ collection.isEmpty <span class="hljs-comment">// =&gt; false</span></code></pre>
 							<aside class="tsd-sources">
 								<p>Inherited from Map.[Symbol.iterator]</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.iterable.d.ts:113</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.iterable.d.ts:113</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,7 +286,7 @@ collection.isEmpty <span class="hljs-comment">// =&gt; false</span></code></pre>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L186">Collection.ts:186</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L245">Collection.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -391,7 +328,7 @@ collection.add(<span class="hljs-string">"foo"</span>);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L217">Collection.ts:217</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L276">Collection.ts:276</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -441,14 +378,14 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L389">Collection.ts:389</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L451">Collection.ts:451</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>since</dt>
 									<dd><p>0.4.0</p>
-										<p>Returns true if all element matche predicate.</p>
+										<p>Returns true if all elements satisfy predicate.</p>
 									</dd>
 									<dt>example</dt>
 									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
@@ -474,20 +411,20 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 					<a name="any" class="tsd-anchor"></a>
 					<h3>any</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">any<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Predicate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">any<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Predicate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L414">Collection.ts:414</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L476">Collection.ts:476</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>since</dt>
 									<dd><p>0.4.0</p>
-										<p>Returns true if collection has at least one or if predicate is given true when atleast one element matches the predicate.</p>
+										<p>Returns true if atleast one element satisfies the predicate.</p>
 									</dd>
 									<dt>example</dt>
 									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
@@ -499,7 +436,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fn: <span class="tsd-signature-type">Predicate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+									<h5>fn: <span class="tsd-signature-type">Predicate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A function that returns a result</p>
 									</div>
@@ -520,7 +457,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 							<aside class="tsd-sources">
 								<p>Inherited from Map.clear</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.collection.d.ts:22</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.collection.d.ts:22</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -537,7 +474,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L441">Collection.ts:441</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L502">Collection.ts:502</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -577,7 +514,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L465">Collection.ts:465</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L526">Collection.ts:526</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -618,7 +555,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L490">Collection.ts:490</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L551">Collection.ts:551</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -658,7 +595,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 							<aside class="tsd-sources">
 								<p>Inherited from Map.delete</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.collection.d.ts:23</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.collection.d.ts:23</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -682,7 +619,7 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 							<aside class="tsd-sources">
 								<p>Inherited from Map.entries</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.iterable.d.ts:118</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.iterable.d.ts:118</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -698,13 +635,13 @@ collection.addMany({ <span class="hljs-string">"foo"</span>: <span class="hljs-s
 					<a name="filter" class="tsd-anchor"></a>
 					<h3>filter</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Predicate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Predicate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L273">Collection.ts:273</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L332">Collection.ts:332</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -732,7 +669,7 @@ collection.filter(<span class="hljs-function">(<span class="hljs-params">item</s
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
 							<p>An array with all the elements that evaluated true</p>
 						</li>
 					</ul>
@@ -741,13 +678,13 @@ collection.filter(<span class="hljs-function">(<span class="hljs-params">item</s
 					<a name="find" class="tsd-anchor"></a>
 					<h3>find</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Predicate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+						<li class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Predicate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L248">Collection.ts:248</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L307">Collection.ts:307</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -759,7 +696,7 @@ collection.filter(<span class="hljs-function">(<span class="hljs-params">item</s
 									<dt>example</dt>
 									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = <span class="hljs-keyword">new</span> Collection&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-built_in">String</span>, [<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>, <span class="hljs-string">"123"</span>]);
 collection.find(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item === <span class="hljs-string">"foo"</span>);
-<span class="hljs-comment">// "foo"</span></code></pre>
+<span class="hljs-comment">// [0, "foo"]</span></code></pre>
 									</dd>
 								</dl>
 							</div>
@@ -772,7 +709,7 @@ collection.find(<span class="hljs-function">(<span class="hljs-params">item</spa
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>
 								<span class="tsd-signature-symbol"> | </span>
 								<span class="tsd-signature-type">undefined</span>
 							</h4>
@@ -791,7 +728,7 @@ collection.find(<span class="hljs-function">(<span class="hljs-params">item</spa
 							<aside class="tsd-sources">
 								<p>Inherited from Map.forEach</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.collection.d.ts:24</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.collection.d.ts:24</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -842,7 +779,7 @@ collection.find(<span class="hljs-function">(<span class="hljs-params">item</spa
 							<aside class="tsd-sources">
 								<p>Inherited from Map.get</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.collection.d.ts:25</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.collection.d.ts:25</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -869,7 +806,7 @@ collection.find(<span class="hljs-function">(<span class="hljs-params">item</spa
 							<aside class="tsd-sources">
 								<p>Inherited from Map.has</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.collection.d.ts:26</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.collection.d.ts:26</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -893,7 +830,7 @@ collection.find(<span class="hljs-function">(<span class="hljs-params">item</spa
 							<aside class="tsd-sources">
 								<p>Inherited from Map.keys</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.iterable.d.ts:123</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.iterable.d.ts:123</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -915,7 +852,7 @@ collection.find(<span class="hljs-function">(<span class="hljs-params">item</spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L301">Collection.ts:301</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L360">Collection.ts:360</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -952,7 +889,7 @@ collection.map(<span class="hljs-function">(<span class="hljs-params">v</span>) 
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, i<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, a<span class="tsd-signature-symbol">: </span><a href="collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, k<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, c<span class="tsd-signature-symbol">: </span><a href="collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
@@ -962,10 +899,10 @@ collection.map(<span class="hljs-function">(<span class="hljs-params">v</span>) 
 															<h5>v: <span class="tsd-signature-type">T</span></h5>
 														</li>
 														<li>
-															<h5>i: <span class="tsd-signature-type">number</span></h5>
+															<h5>k: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
 														</li>
 														<li>
-															<h5>a: <a href="collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+															<h5>c: <a href="collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
@@ -990,7 +927,7 @@ collection.map(<span class="hljs-function">(<span class="hljs-params">v</span>) 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L331">Collection.ts:331</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L389">Collection.ts:389</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1036,7 +973,7 @@ col1.merge(col2);
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L355">Collection.ts:355</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L413">Collection.ts:413</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1059,6 +996,40 @@ collection.random(); <span class="hljs-comment">// =&gt; will return 1 of foo, b
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L570">Collection.ts:570</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.5.0</p>
+										<p>Remove an item from the collection</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>item: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The item to delete</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="set" class="tsd-anchor"></a>
 					<h3>set</h3>
@@ -1070,7 +1041,7 @@ collection.random(); <span class="hljs-comment">// =&gt; will return 1 of foo, b
 							<aside class="tsd-sources">
 								<p>Inherited from Map.set</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.collection.d.ts:27</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.collection.d.ts:27</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1087,6 +1058,64 @@ collection.random(); <span class="hljs-comment">// =&gt; will return 1 of foo, b
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="toarray" class="tsd-anchor"></a>
+					<h3>to<wbr>Array</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Array<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L133">Collection.ts:133</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.4.0</p>
+										<p>Convert collection values to array</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
+collection.asArray <span class="hljs-comment">// =&gt; ["foo", "bar", "baz"]</span></code></pre>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="toobject" class="tsd-anchor"></a>
+					<h3>to<wbr>Object</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Object<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L154">Collection.ts:154</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>since</dt>
+									<dd><p>0.4.0</p>
+										<p>Convert collection to object</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> collection = Collection.from&lt;<span class="hljs-built_in">string</span>&gt;([<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>]);
+collection.asObject <span class="hljs-comment">// =&gt; {0: "foo", 1: "bar", 2: "baz"}</span></code></pre>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="tostring" class="tsd-anchor"></a>
 					<h3>to<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -1096,7 +1125,7 @@ collection.random(); <span class="hljs-comment">// =&gt; will return 1 of foo, b
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L369">Collection.ts:369</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L431">Collection.ts:431</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1125,7 +1154,7 @@ collection.toString(); <span class="hljs-comment">// =&gt; [Collection&lt;String
 							<aside class="tsd-sources">
 								<p>Inherited from Map.values</p>
 								<ul>
-									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typescript/lib/lib.es2015.iterable.d.ts:128</li>
+									<li>Defined in /home/pepijn/.config/yarn/global/node_modules/typedoc/node_modules/typescript/lib/lib.es2015.iterable.d.ts:128</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1147,7 +1176,7 @@ collection.toString(); <span class="hljs-comment">// =&gt; [Collection&lt;String
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L123">Collection.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L182">Collection.ts:182</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1199,7 +1228,7 @@ collection.toString(); <span class="hljs-comment">// =&gt; [Collection&lt;String
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/751362e/src/Collection.ts#L159">Collection.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/KurozeroPB/ts-collection/blob/23bdc94/src/Collection.ts#L218">Collection.ts:218</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1273,12 +1302,6 @@ collection.toString(); <span class="hljs-comment">// =&gt; [Collection&lt;String
 								<a href="collection.html#map" class="tsd-kind-icon">Map</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="collection.html#asarray" class="tsd-kind-icon">as<wbr>Array</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="collection.html#asobject" class="tsd-kind-icon">as<wbr>Object</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="collection.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
@@ -1341,8 +1364,17 @@ collection.toString(); <span class="hljs-comment">// =&gt; [Collection&lt;String
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="collection.html#random" class="tsd-kind-icon">random</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="collection.html#remove" class="tsd-kind-icon">remove</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="collection.html#set" class="tsd-kind-icon">set</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="collection.html#toarray" class="tsd-kind-icon">to<wbr>Array</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="collection.html#toobject" class="tsd-kind-icon">to<wbr>Object</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="collection.html#tostring" class="tsd-kind-icon">to<wbr>String</a>

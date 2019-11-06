@@ -1,13 +1,13 @@
 {
     "name": "@kurozero/collection",
-    "version": "0.4.8",
+    "version": "0.5.0",
     "description": "A modern Collection implementation in TypeScript",
     "license": "MIT",
     "main": "lib/index",
     "module": "lib/index.mjs",
     "types": "lib/index.d.ts",
     "engines": {
-        "node": ">=10.x"
+        "node": ">=10"
     },
     "files": [
         "lib"
@@ -32,28 +32,34 @@
         "typescript"
     ],
     "scripts": {
-        "prepare": "yarn run rollup:build && yarn run types:generate",
+        "prepare": "yarn build",
+        "build": "yarn rollup:build && yarn types:generate && webpack --mode production",
         "rollup:build": "rollup -c",
-        "rollup:watch": "yarn run rollup:build -- --watch",
         "types:generate": "dts-bundle-generator -o lib/index.d.ts src/index.ts",
-        "test": "yarn run test:jest",
+        "test": "yarn test:jest",
         "test:jest": "jest --config jest.config.js --no-cache",
-        "docs": "typedoc && cp .nojekyll docs/"
+        "docs": "typedoc && cp .nojekyll docs/",
+        "clean": "rm -rf ./node_modules && rm ./yarn.lock"
     },
     "dependencies": {},
     "devDependencies": {
-        "@types/jest": "^24.0.18",
-        "@typescript-eslint/eslint-plugin": "^2.3.2",
-        "@typescript-eslint/parser": "^2.3.2",
+        "@types/jest": "^24.0.22",
+        "@types/node": "^12.12.6",
+        "@types/webpack": "^4.39.8",
+        "@typescript-eslint/eslint-plugin": "^2.6.1",
+        "@typescript-eslint/parser": "^2.6.1",
         "dts-bundle-generator": "^3.2.0",
-        "eslint": "^6.5.1",
+        "eslint": "^6.6.0",
         "gts": "^1.1.0",
         "jest": "^24.9.0",
-        "rollup": "^1.23.0",
+        "rollup": "^1.26.3",
         "rollup-plugin-typescript": "^1.0.1",
         "ts-jest": "^24.1.0",
+        "ts-loader": "^6.2.1",
+        "ts-node": "^8.4.1",
         "tslib": "^1.10.0",
-        "tslint": "^5.20.0",
-        "typescript": "^3.6.3"
+        "typescript": "^3.7.2",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.10"
     }
 }

@@ -1,3 +1,7 @@
+export interface Result<T> {
+	key: string | number;
+	value: T;
+}
 export interface AbstractClass {
 	name: string;
 }
@@ -29,11 +33,9 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * collection.isEmpty // => false
 	 * ```
 	 */
-	readonly isEmpty: boolean;
+	get isEmpty(): boolean;
 	/**
 	 * @since 0.4.0
-	 *
-	 * @since 0.4.7 make getter and rename
 	 *
 	 * Convert collection values to array
 	 *
@@ -45,11 +47,9 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * collection.asArray // => ["foo", "bar", "baz"]
 	 * ```
 	 */
-	readonly asArray: T[];
+	toArray(): T[];
 	/**
 	 * @since 0.4.0
-	 *
-	 * @since 0.4.7 make getter and rename
 	 *
 	 * Convert collection to object
 	 *
@@ -61,7 +61,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * collection.asObject // => {0: "foo", 1: "bar", 2: "baz"}
 	 * ```
 	 */
-	readonly asObject: Record<string | number | symbol, T>;
+	toObject(): Record<string | number | symbol, T>;
 	/**
 	 * @since 0.2.0
 	 *
@@ -160,10 +160,10 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * ```ts
 	 * const collection = new Collection<string>(String, ["foo", "bar", "baz", "123"]);
 	 * collection.find((item) => item === "foo");
-	 * // "foo"
+	 * // [0, "foo"]
 	 * ```
 	 */
-	find(fn: Predicate<T>): T | undefined;
+	find(fn: Predicate<T>): Result<T> | undefined;
 	/**
 	 * @since 0.1.0
 	 *
@@ -182,7 +182,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * // ]
 	 * ```
 	 */
-	filter(fn: Predicate<T>): T[];
+	filter(fn: Predicate<T>): Result<T>[];
 	/**
 	 * @since 0.1.0
 	 *
@@ -203,7 +203,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * // ]
 	 * ```
 	 */
-	map<R>(fn: (v: T, i: number, a: Collection<T>) => R): R[];
+	map<R>(fn: (v: T, k: string | number, c: Collection<T>) => R): R[];
 	/**
 	 * @since 0.1.0
 	 *
@@ -231,7 +231,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 *
 	 * Returns a random Object from the Collection or undefined if the Collection is empty
 	 *
-	 * @returns {T|undefined} The random object or undefined if none exist
+	 * @returns {T | undefined} The random object or undefined if none exist
 	 *
 	 * @example
 	 * ```ts
@@ -253,7 +253,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	/**
 	 * @since 0.4.0
 	 *
-	 * Returns true if all element matche predicate.
+	 * Returns true if all elements satisfy predicate.
 	 *
 	 * @param {Predicate<T>} fn A function that returns a result
 	 *
@@ -270,7 +270,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	/**
 	 * @since 0.4.0
 	 *
-	 * Returns true if collection has at least one or if predicate is given true when atleast one element matches the predicate.
+	 * Returns true if atleast one element satisfies the predicate.
 	 *
 	 * @param {Predicate<T>} fn A function that returns a result
 	 *
@@ -283,7 +283,7 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * // => true, collection has atleast 1 item that includes an "a"
 	 * ```
 	 */
-	any(fn?: Predicate<T> | null): boolean;
+	any(fn: Predicate<T> | null): boolean;
 	/**
 	 * @since 0.4.0
 	 *
@@ -336,6 +336,14 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * ```
 	 */
 	count(fn?: Predicate<T> | null): number;
+	/**
+	 * @since 0.5.0
+	 *
+	 * Remove an item from the collection
+	 *
+	 * @param {T} item The item to delete
+	 */
+	remove(item: T): void;
 }
 export default Collection;
 

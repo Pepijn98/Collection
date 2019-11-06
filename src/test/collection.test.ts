@@ -46,7 +46,7 @@ describe("Collection", () => {
         const collection = Collection.from(["foo", "bar", "baz", "test"]);
         const item = collection.find((v) => v === "foo");
         it("should return foo", () => {
-            expect(item).toBe("foo");
+            expect(item).toStrictEqual({ "key": 0, "value": "foo" });
         });
     });
 
@@ -54,7 +54,16 @@ describe("Collection", () => {
         const collection = Collection.from(["foo", "bar", "baz", "test"]);
         const items = collection.filter((v) => v.includes("a"));
         it("should return 2 items", () => {
-            expect(items).toStrictEqual(["bar", "baz"]);
+            expect(items).toStrictEqual([
+                {
+                    "key": 1,
+                    "value": "bar",
+                },
+                {
+                    "key": 2,
+                    "value": "baz",
+                },
+            ]);
         });
     });
 
@@ -109,9 +118,6 @@ describe("Collection", () => {
         it("should return true if any value evaluates true", () => {
             const result = collection.any((value) => value.includes("a"));
             expect(result).toBe(true);
-
-            const result2 = collection.any();
-            expect(result2).toBe(true);
         });
     });
 
@@ -151,7 +157,7 @@ describe("Collection", () => {
         const collection = new Collection<string>(String);
         collection.addMany(["foo", "bar", "baz", "123"]);
         it("should return an array with the values", () => {
-            const result = collection.asArray;
+            const result = collection.toArray();
             expect(result).toStrictEqual(["foo", "bar", "baz", "123"]);
         });
     });
@@ -160,7 +166,7 @@ describe("Collection", () => {
         const collection = new Collection<string>(String);
         collection.addMany(["foo", "bar", "baz", "123"]);
         it("should return an object with key values", () => {
-            const result = collection.asObject;
+            const result = collection.toObject();
             expect(result).toStrictEqual({ 0: "foo", 1: "bar", 2: "baz", 3: "123" });
         });
     });

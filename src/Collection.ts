@@ -1,4 +1,67 @@
-import { _isObjLiteral } from "./utils";
+/**
+ * @ignore
+ * @hidden
+ * 
+ * @param _obj 
+ */
+function _isObjLiteral<T>(_obj: Record<string | number | symbol, T>) {
+    var _test = _obj;
+    return (typeof _obj !== 'object' || _obj === null ? false : ((function () {
+        while (!false) {
+            if (Object.getPrototypeOf(_test = Object.getPrototypeOf(_test)) === null) {
+                break;
+            }
+        }
+        return Object.getPrototypeOf(_obj) === _test;
+    })()));
+}
+
+/**
+ * @ignore
+ * @hidden
+ *
+ * @param x 
+ * @param y 
+ */
+function _equals(x: any, y: any) {
+    if (x === y) return true;
+    // if both x and y are null or undefined and exactly the same
+
+    if (!(x instanceof Object) || !(y instanceof Object)) return false;
+    // if they are not strictly equal, they both need to be Objects
+
+    if (x.constructor !== y.constructor) return false;
+    // they must have the exact same prototype chain, the closest we can do is
+    // test there constructor.
+
+    for (var p in x) {
+        if (!x.hasOwnProperty(p)) continue;
+        // other properties were tested using x.constructor === y.constructor
+
+        if (!y.hasOwnProperty(p)) return false;
+        // allows to compare x[ p ] and y[ p ] when set to undefined
+
+        if (x[p] === y[p]) continue;
+        // if they have the same strict value or identity then they are equal
+
+        if (typeof (x[p]) !== "object") return false;
+        // Numbers, Strings, Functions, Booleans must be strictly equal
+
+        if (!_equals(x[p], y[p])) return false;
+        // Objects and Arrays must be tested recursively
+    }
+
+    for (p in y) {
+        if (y.hasOwnProperty(p) && !x.hasOwnProperty(p)) return false;
+        // allows x[ p ] to be set to undefined
+    }
+    return true;
+}
+
+interface Result<T> {
+    key: string | number;
+    value: T;
+}
 
 interface AbstractClass {
     name: string;
@@ -56,8 +119,6 @@ export class Collection<T> extends Map<string | number, T> {
 
     /**
      * @since 0.4.0
-     * 
-     * @since 0.4.7 make getter and rename
      *
      * Convert collection values to array
      *
@@ -69,9 +130,9 @@ export class Collection<T> extends Map<string | number, T> {
      * collection.asArray // => ["foo", "bar", "baz"]
      * ```
      */
-    public get asArray(): T[] {
+    public toArray(): T[] {
         const arr: T[] = [];
-        for (const value of this.values()) {
+        for (const [_, value] of this) {
             arr.push(value)
         }
         return arr;
@@ -79,8 +140,6 @@ export class Collection<T> extends Map<string | number, T> {
 
     /**
      * @since 0.4.0
-     * 
-     * @since 0.4.7 make getter and rename
      *
      * Convert collection to object
      *
@@ -92,7 +151,7 @@ export class Collection<T> extends Map<string | number, T> {
      * collection.asObject // => {0: "foo", 1: "bar", 2: "baz"}
      * ```
      */
-    public get asObject(): Record<string | number | symbol, T> {
+    public toObject(): Record<string | number | symbol, T> {
         const obj: Record<string | number | symbol, T> = {};
         for (const [key, value] of this) {
             obj[key] = value;
@@ -159,7 +218,7 @@ export class Collection<T> extends Map<string | number, T> {
     public static merge<T>(...collections: Collection<T>[]): Collection<T> {
         const temp = new Collection<T>();
         for (let i = 0; i < collections.length; i++) {
-            for (const [key, value] of collections[i].entries()) {
+            for (const [key, value] of collections[i]) {
                 temp.set(key, value);
             }
         }
@@ -184,8 +243,8 @@ export class Collection<T> extends Map<string | number, T> {
      * ```
      */
     public add(v: T): void {
-        if ((v as any)["_key"]) {
-            this.set((v as any)["_key"], v);
+        if ((v as any)._key) {
+            this.set((v as any)._key, v);
         } else {
             this.set(this.size, v);
         }
@@ -242,12 +301,12 @@ export class Collection<T> extends Map<string | number, T> {
      * ```ts
      * const collection = new Collection<string>(String, ["foo", "bar", "baz", "123"]);
      * collection.find((item) => item === "foo");
-     * // "foo"
+     * // [0, "foo"]
      * ```
      */
-    public find(fn: Predicate<T>): T | undefined {
-        for (const item of this.values()) {
-            if (fn(item)) return item;
+    public find(fn: Predicate<T>): Result<T> | undefined {
+        for (const [key, value] of this) {
+            if (fn(value)) return { key, value };
         }
         return undefined;
     }
@@ -270,10 +329,10 @@ export class Collection<T> extends Map<string | number, T> {
      * // ]
      * ```
      */
-    public filter(fn: Predicate<T>): T[] {
-        const results: T[] = [];
-        for (const item of this.values()) {
-            if (fn(item)) results.push(item);
+    public filter(fn: Predicate<T>): Result<T>[] {
+        const results: Result<T>[] = [];
+        for (const [key, value] of this) {
+            if (fn(value)) results.push({ key, value });
         }
         return results;
     }
@@ -298,11 +357,10 @@ export class Collection<T> extends Map<string | number, T> {
      * // ]
      * ```
      */
-    public map<R>(fn: (v: T, i: number, a: Collection<T>) => R): R[] {
+    public map<R>(fn: (v: T, k: string | number, c: Collection<T>) => R): R[] {
         const results: R[] = [];
-        const arr = Array.from(this.values());
-        for (let i = 0; i < arr.length; i++) {
-            results.push(fn(arr[i], i, this));
+        for (const [key, value] of this) {
+            results.push(fn(value, key, this));
         }
         return results;
     }
@@ -344,7 +402,7 @@ export class Collection<T> extends Map<string | number, T> {
      *
      * Returns a random Object from the Collection or undefined if the Collection is empty
      *
-     * @returns {T|undefined} The random object or undefined if none exist
+     * @returns {T | undefined} The random object or undefined if none exist
      * 
      * @example
      * ```ts
@@ -353,8 +411,12 @@ export class Collection<T> extends Map<string | number, T> {
      * ```
      */
     public random(): T | undefined {
-        if (!this.size) return undefined;
-        return Array.from(this.values())[Math.floor(Math.random() * this.size)];
+        const index = Math.floor(Math.random() * this.size);
+        const iter = this.values();
+        for (let i = 0; i < index; ++i) {
+            iter.next();
+        }
+        return iter.next().value;
     }
 
     /**
@@ -373,7 +435,7 @@ export class Collection<T> extends Map<string | number, T> {
     /**
      * @since 0.4.0
      *
-     * Returns true if all element matche predicate.
+     * Returns true if all elements satisfy predicate.
      *
      * @param {Predicate<T>} fn A function that returns a result
      *
@@ -387,18 +449,18 @@ export class Collection<T> extends Map<string | number, T> {
      * ```
      */
     public all(fn: Predicate<T>): boolean {
-        let allTrue = false;
         for (const [_, value] of this) {
-            if (fn(value)) allTrue = true;
-            else allTrue = false;
+            if (!fn(value)) {
+                return false;
+            }
         }
-        return allTrue;
+        return true;
     }
 
     /**
      * @since 0.4.0
      *
-     * Returns true if collection has at least one or if predicate is given true when atleast one element matches the predicate.
+     * Returns true if atleast one element satisfies the predicate.
      *
      * @param {Predicate<T>} fn A function that returns a result
      *
@@ -411,15 +473,14 @@ export class Collection<T> extends Map<string | number, T> {
      * // => true, collection has atleast 1 item that includes an "a"
      * ```
      */
-    public any(fn?: Predicate<T> | null): boolean {
+    public any(fn: Predicate<T> | null): boolean {
         if (fn) {
             for (const [_, value] of this) {
                 if (fn(value)) return true;
             }
             return false;
-        } else {
-            return this.size >= 1;
         }
+        return false;
     }
 
     /**
@@ -496,6 +557,27 @@ export class Collection<T> extends Map<string | number, T> {
             return i;
         } else {
             return this.size;
+        }
+    }
+
+    /**
+     * @since 0.5.0
+     *
+     * Remove an item from the collection
+     * 
+     * @param {T} item The item to delete
+     */
+    public remove(item: T): void {
+        if ((item as any)._key) {
+            const result = this.get((item as any)._key);
+            if (result) {
+                this.delete((result as any)._key);
+            }
+        } else {
+            const result = this.find((v) => _equals(v, item));
+            if (result) {
+                this.delete(result.key);
+            }
         }
     }
 }

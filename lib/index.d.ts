@@ -154,13 +154,14 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * Returns first matching Object or undefined if no match
 	 *
 	 * @param {Predicate<T>} fn A function that returns true if it matches the given param
-	 * @returns {T | undefined} The first matching object or undefined if none found
+	 * @returns {Result<T> | undefined} The first matching object or undefined if none found
 	 *
 	 * @example
 	 * ```ts
 	 * const collection = new Collection<string>(String, ["foo", "bar", "baz", "123"]);
-	 * collection.find((item) => item === "foo");
-	 * // [0, "foo"]
+	 * const result = collection.find((item) => item === "foo");
+	 * console.log(result);
+	 * // { "key": 0, "value": "foo" }
 	 * ```
 	 */
 	find(fn: Predicate<T>): Result<T> | undefined;
@@ -170,15 +171,16 @@ export declare class Collection<T> extends Map<string | number, T> {
 	 * Returns an Array with all the elements that make the function evaluate true
 	 *
 	 * @param {Predicate<T>} fn A function that returns true if it matches the given param
-	 * @returns {T[]} An array with all the elements that evaluated true
+	 * @returns {Result<T>[]} An array with all the elements that evaluated true
 	 *
 	 * @example
 	 * ```ts
 	 * const collection = new Collection<string>(String, ["foo", "bar", "baz", "123"]);
-	 * collection.filter((item) => item.includes("a"));
+	 * const results = collection.filter((item) => item.includes("a"));
+	 * console.log(results);
 	 * // [
-	 * //     "bar",
-	 * //     "baz"
+	 * //     { "key": 1, "value": "bar" },
+	 * //     { "key": 2, "value": "baz" }
 	 * // ]
 	 * ```
 	 */
